@@ -556,8 +556,8 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
             </div>
             
             {/* Enhanced Chart with increased height */}
-            <div className="h-80 relative bg-gray-50 rounded-lg p-6">
-              <svg className="w-full h-full" viewBox="0 0 600 280" preserveAspectRatio="xMidYMid meet">
+            <div className="flex-1 relative bg-gray-50 rounded-lg p-4">
+              <svg className="w-full h-full" viewBox="0 0 600 360" preserveAspectRatio="xMidYMid meet">
                 <defs>
                   <linearGradient id="chartGradient" x1="0%" y1="0%" x2="0%" y2="100%">
                     <stop offset="0%" stopColor="#1B3D2F" stopOpacity="0.3" />
@@ -566,13 +566,13 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
                 </defs>
                 
                 {/* Grid lines */}
-                {[1, 2, 3, 4, 5].map((i) => (
+                {[1, 2, 3, 4, 5, 6].map((i) => (
                   <line
                     key={i}
                     x1="80"
-                    y1={30 + (i * 40)}
+                    y1={40 + (i * 45)}
                     x2="520"
-                    y2={30 + (i * 40)}
+                    y2={40 + (i * 45)}
                     stroke="#E5E7EB"
                     strokeWidth="1"
                     strokeDasharray="2,2"
@@ -580,20 +580,20 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
                 ))}
                 
                 {/* Y-axis */}
-                <line x1="80" y1="30" x2="80" y2="230" stroke="#9CA3AF" strokeWidth="2"/>
+                <line x1="80" y1="40" x2="80" y2="310" stroke="#9CA3AF" strokeWidth="2"/>
                 
                 {/* X-axis */}
-                <line x1="80" y1="230" x2="520" y2="230" stroke="#9CA3AF" strokeWidth="2"/>
+                <line x1="80" y1="310" x2="520" y2="310" stroke="#9CA3AF" strokeWidth="2"/>
                 
                 {/* Y-axis labels */}
-                {[0, 1, 2, 3, 4, 5].map((index) => {
+                {[0, 1, 2, 3, 4, 5, 6].map((index) => {
                   const maxValue = Math.max(...getChartData().map(d => d.value));
-                  const yValue = (maxValue / 5) * (5 - index);
+                  const yValue = (maxValue / 6) * (6 - index);
                   return (
                     <text
                       key={index}
                       x="70"
-                      y={38 + (index * 40)}
+                      y={48 + (index * 45)}
                       textAnchor="end"
                       className="text-xs fill-[#6B7280]"
                     >
@@ -608,7 +608,7 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
                   const maxValue = Math.max(...data.map(d => d.value));
                   const points = data.map((point, index) => {
                     const x = 100 + (index * (400 / (data.length - 1)));
-                    const y = 230 - ((point.value / maxValue) * 180);
+                    const y = 310 - ((point.value / maxValue) * 250);
                     return `${x},${y}`;
                   }).join(' ');
                   
@@ -616,7 +616,7 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
                     <>
                       {/* Area under curve */}
                       <polygon
-                        points={`${points} ${100 + ((data.length - 1) * (400 / (data.length - 1)))},230 100,230`}
+                        points={`${points} ${100 + ((data.length - 1) * (400 / (data.length - 1)))},310 100,310`}
                         fill="url(#chartGradient)"
                       />
                       
@@ -633,7 +633,7 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
                       {/* Data points with hover effect */}
                       {data.map((point, index) => {
                         const x = 100 + (index * (400 / (data.length - 1)));
-                        const y = 230 - ((point.value / maxValue) * 180);
+                        const y = 310 - ((point.value / maxValue) * 250);
                         return (
                           <g key={index}>
                             <circle
@@ -657,7 +657,7 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
                   <text
                     key={index}
                     x={100 + (index * (400 / (getChartData().length - 1)))}
-                    y={250}
+                    y={330}
                     textAnchor="middle"
                     className="text-xs fill-[#6B7280]"
                   >
@@ -668,10 +668,10 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
                 {/* Y-axis title */}
                 <text
                   x="20"
-                  y="130"
+                  y="175"
                   textAnchor="middle"
                   className="text-xs fill-[#6B7280]"
-                  transform="rotate(-90, 25, 175)"
+                  transform="rotate(-90, 20, 175)"
                 >
                   {getYAxisLabel()}
                 </text>
@@ -679,7 +679,7 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
                 {/* X-axis title */}
                 <text
                   x="300"
-                  y="270"
+                  y="350"
                   textAnchor="middle"
                   className="text-xs fill-[#6B7280]"
                 >
@@ -688,7 +688,7 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
               </svg>
               
               {/* Chart Legend */}
-             <div className="absolute top-2 right-2 bg-white rounded-lg shadow-sm p-2 border border-gray-200">
+             <div className="absolute top-4 right-4 bg-white rounded-lg shadow-sm p-2 border border-gray-200">
                 <div className="flex items-center space-x-2">
                   <div className="w-3 h-3 bg-[#1B3D2F] rounded-full"></div>
                  <span
