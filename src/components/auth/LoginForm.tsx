@@ -34,8 +34,13 @@ export default function LoginForm({ onToggleMode }: LoginFormProps) {
     setError("");
     setIsDemoLoading(true);
 
-    // Demo access removed for security. Users must create accounts.
-    setError("Demo access has been disabled. Please create an account to continue.");
+    // Sign in with demo account credentials
+    const { error } = await signIn("demo@elevated.app", "DemoPassword123!");
+
+    if (error) {
+      setError("Demo access is temporarily unavailable. Please try again later or create an account.");
+    }
+
     setIsDemoLoading(false);
   };
 
