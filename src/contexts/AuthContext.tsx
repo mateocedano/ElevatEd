@@ -27,48 +27,26 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Temporary: Create a mock user for testing without Supabase
-    const mockUser = {
-      id: 'mock-user-id',
-      email: 'jane.doe@example.com',
-      user_metadata: {
-        full_name: 'Jane Doe'
-      }
-    } as User
-    
-    setUser(mockUser)
-    setLoading(false)
-    return
-    
     // Get initial session
     auth.getCurrentUser().then(({ user }) => {
       setUser(user)
       setLoading(false)
     })
 
-    // Listen for auth changes
+    // Listen for auth changes - use async block to avoid deadlocks
     const { data: { subscription } } = auth.onAuthStateChange((event, session) => {
-      setSession(session)
-      setUser(session?.user ?? null)
-      setLoading(false)
+      // Use async block inside callback to prevent deadlocks
+      (() => {
+        setSession(session)
+        setUser(session?.user ?? null)
+        setLoading(false)
+      })()
     })
 
     return () => subscription?.unsubscribe()
   }, [])
 
   const signUp = async (email: string, password: string, fullName?: string) => {
-    // Temporary: Mock successful signup
-    const mockUser = {
-      id: 'mock-user-id',
-      email: email,
-      user_metadata: {
-        full_name: fullName || 'New User'
-      }
-    } as User
-    
-    setUser(mockUser)
-    return { error: null }
-    
     setLoading(true)
     const { error } = await auth.signUp(email, password, { full_name: fullName })
     setLoading(false)
@@ -76,18 +54,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }
 
   const signIn = async (email: string, password: string) => {
-    // Temporary: Mock successful signin
-    const mockUser = {
-      id: 'mock-user-id',
-      email: email,
-      user_metadata: {
-        full_name: 'Jane Doe'
-      }
-    } as User
-    
-    setUser(mockUser)
-    return { error: null }
-    
     setLoading(true)
     const { error } = await auth.signIn(email, password)
     setLoading(false)
@@ -95,10 +61,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }
 
   const signOut = async () => {
-    // Clear the user to redirect to login page
-    setUser(null)
-    return { error: null }
-    
     setLoading(true)
     const { error } = await auth.signOut()
     setLoading(false)

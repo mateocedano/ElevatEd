@@ -34,38 +34,8 @@ export default function LoginForm({ onToggleMode }: LoginFormProps) {
     setError("");
     setIsDemoLoading(true);
 
-    try {
-      const response = await fetch(
-        "https://elevat-ed-backend.vercel.app/api/helloworld",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message: "Hello!" }),
-        }
-      );
-
-      if (response.ok) {
-        // Parse and log the response data
-        const responseData = await response.json();
-        console.log("Received message from backend:", responseData);
-
-        // If the API call is successful, proceed with demo login
-        const { error } = await signIn("demo@example.com", "password");
-
-        if (error) {
-          setError(error.message);
-        }
-      } else {
-        console.log("API call failed with status:", response.status);
-        setError(
-          "Demo access temporarily unavailable. Please try again later."
-        );
-      }
-    } catch (err) {
-      console.error("Demo access error:", err);
-      setError("Unable to connect to demo server. Please try again later.");
-    }
-
+    // Demo access removed for security. Users must create accounts.
+    setError("Demo access has been disabled. Please create an account to continue.");
     setIsDemoLoading(false);
   };
 
