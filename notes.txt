@@ -1,0 +1,111 @@
+# ElevatEd Platform Setup Guide
+
+## What I have done this week (10/6 - 10/10)
+
+I noticed you mention supabase in your message and I initial thought of using it as our backend. Here is a simple explaination, supabase is BaaS (Backend as a Service) so when you create a Supabase project, it function similarly to a backend deployed on a cloud (with built in Authentication, Database, etc which really helpful for us later, no need more tools). So I migrated the backend logic from the code I showed you 2 weeks ago to Supabase (no code needed everything can be done via the web interface) 
+
+### 1. Created a Database in the Cloud
+
+I created an online database on Supabase with 1 table for now
+- User accounts (implemented)
+
+### 2. Set Up User Authentication
+
+I created a system that allows users to:
+- Create accounts (sign up)
+- Log into their accounts (sign in)
+- Log out of their accounts (sign out)
+
+This is like creating a secure entrance door to our platform where people need to identify themselves before entering.
+
+### 3. Created Two Connected Systems
+
+I set up two connected parts for handling user information:
+
+a) **User System (auth.users)**: This is the security checkpoint.
+   - Handles passwords and login details
+   - Manages security and verification
+   - Controls who can access the system
+
+b) **Profile System (profiles table)**: This is the user's personal information file.
+   - Stores names, roles (student or advisor)
+   - Holds preferences and personal details
+   - Contains profile pictures
+
+These two parts work together - when someone creates an account, both parts are updated automatically.
+
+### 4. Connected Our App to the Database
+
+I linked our application code to the database by:
+- Setting up special access keys (like digital keys to our filing cabinet)
+- Creating helper functions that talk to the database
+- Making sure information flows smoothly between our app and database
+
+## How to Use and Test the System
+
+### Creating a New User Account:
+
+0. Test in your local editor or maybe in Bolt, try to create a new file called .env.local in the same level as your DEMO_SETUP.md and add the following content
+'''
+VITE_SUPABASE_URL=https://ynwkzebyrlohsmivjtcl.supabase.co
+VITE_SUPABASE_ANON_KEY=sb_publishable_wBAk2_Vp2T25olizV5g3EQ_pLUvpi7Q
+
+REACT_APP_SUPABASE_URL=https://ynwkzebyrlohsmivjtcl.supabase.co
+REACT_APP_SUPABASE_PUBLISHABLE_DEFAULT_KEY=sb_publishable_wBAk2_Vp2T25olizV5g3EQ_pLUvpi7Q
+'''
+
+1. Go to the sign-up page in our app
+2. Fill in your email address
+3. Create a password (must be secure)
+4. Enter your name
+5. Click "Sign Up"
+
+Behind the scenes:
+- The system creates a new user in auth.users
+- It automatically creates a matching profile
+- Your information is securely stored
+
+### Logging In:
+
+1. Go to the login page
+2. Enter your email
+3. Enter your password
+4. Click "Log In"
+
+The system will check your credentials and let you in if they're correct.
+
+### Viewing Your Profile:
+
+Once logged in, you can see your profile information, which is being pulled from the database we created.
+
+### Viewing Your Entry on supabase 
+Go to the project that I sent you via invitation. After you signed up with your email (make sure to confirm the registration via later email sent by supabse), you can check your entry in the supabase interface
+On left side bar
+- press on Table editor, you should see your profile in the profiles table. It should be on the user table as well but there are some bugs I have not found out yet 
+- press on the Authentication to see the User that signed up throught the portal. From what I understand is that every sign up go to here (may or may not enter your offical table) above. Idk, I'm also learning as well 
+- press on database to see the relationship between table 
+
+## Technical Details (for Learning)
+
+- **Database Tables**: Think of these as spreadsheets that store specific types of information.
+- **SQL Commands**: These are instructions we gave to create the database structure.
+- **Triggers**: These are automatic actions that happen when something changes (like creating a profile when a new user signs up).
+- **Row Level Security**: This ensures people can only see their own information, not other users' data.
+
+## Common Issues and Solutions
+
+1. **Profile exists but no user**: 
+   - This means something went wrong during registration
+   - Try signing up again with a different email
+
+2. **Can't log in after signing up**:
+   - Make sure you're using the exact email and password you registered with
+   - Check if you received a verification email (if enabled)
+
+3. **Missing profile information**:
+   - This might happen if the automatic profile creation failed
+   - Contact support to fix your account
+
+Remember: This system is designed to be secure, so some technical protections might seem inconvenient but are there to protect your information!
+
+Of course there are still bugs you might ran into but it is a great intermediate step for us later. Thank you for the suggestion (I did not notice this before when I thought of using supabase as a database only)

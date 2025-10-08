@@ -35,10 +35,14 @@ export default function LoginForm({ onToggleMode }: LoginFormProps) {
     setIsDemoLoading(true);
 
     // Sign in with demo account credentials
+    // Note: You need to create this demo user in your Supabase Auth
+    // You can use the SQL migration provided in supabase/migrations/20251004222906_create_demo_user.sql
     const { error } = await signIn("demo@elevated.app", "DemoPassword123!");
 
     if (error) {
-      setError("Demo access is temporarily unavailable. Please try again later or create an account.");
+      setError(
+        "Demo access is temporarily unavailable. Please ensure the demo user is created in your Supabase instance."
+      );
     }
 
     setIsDemoLoading(false);
