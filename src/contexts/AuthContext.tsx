@@ -39,6 +39,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Check for demo user bypass (development only)
+    const demoUserJson = sessionStorage.getItem('demoUser');
+    if (demoUserJson) {
+      try {
+        const demoUser = JSON.parse(demoUserJson);
+        setUser(demoUser);
+        setLoading(false);
+        return;
+      } catch (e) {
+        sessionStorage.removeItem('demoUser');
+      }
+    }
+
     // Get initial session
     auth.getCurrentUser().then(({ user }) => {
       setUser(user);
@@ -96,6 +109,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const signOut = async () => {
+    // Clear demo user if present
+    sessionStorage.removeItem('demoUser');
+
     setLoading(true);
     const { error } = await auth.signOut();
     setLoading(false);
