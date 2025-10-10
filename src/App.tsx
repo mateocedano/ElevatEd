@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GraduationCap } from 'lucide-react';
+import { GraduationCap, Bell, User } from 'lucide-react';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import AuthPage from './components/auth/AuthPage';
 import LoadingSpinner from './components/LoadingSpinner';
@@ -85,7 +85,10 @@ function Dashboard() {
       <div className="max-w-full">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
-          <h1 className="text-4xl font-bold text-[#1B3D2F]">Dashboard</h1>
+          <div className="flex items-center space-x-2">
+            <GraduationCap className="w-8 h-8 text-blue-600" />
+            <span className="text-2xl font-bold text-[#1B3D2F]">ElevatEd</span>
+          </div>
           <div className="flex items-center space-x-4">
             <SearchBar />
             <div className="flex items-center space-x-3">
@@ -99,10 +102,16 @@ function Dashboard() {
                 Sign Out
               </button>
             </div>
-            <div className="flex items-center space-x-2">
-              <GraduationCap className="w-8 h-8 text-blue-600" />
-              <span className="text-2xl font-bold text-[#1B3D2F]">ElevatEd</span>
-            </div>
+            <button className="p-2 hover:bg-gray-100 rounded-full transition-colors">
+              <Bell className="w-5 h-5 text-[#6B7280]" />
+            </button>
+            <button className="w-10 h-10 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center hover:opacity-90 transition-opacity">
+              <img
+                src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop"
+                alt="Profile"
+                className="w-full h-full rounded-full object-cover"
+              />
+            </button>
           </div>
         </div>
 
