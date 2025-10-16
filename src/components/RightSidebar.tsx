@@ -41,27 +41,46 @@ const challenges = [
 ];
 
 export default function RightSidebar() {
+  const today = new Date();
+  const currentDate = today.getDate();
+  const currentMonth = today.toLocaleString('default', { month: 'long' });
+  const currentYear = today.getFullYear();
+
+  const firstDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+  const lastDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+  const startingDayOfWeek = firstDayOfMonth.getDay();
+  const daysInMonth = lastDayOfMonth.getDate();
+
+  const calendarDays = [];
+  for (let i = 0; i < startingDayOfWeek; i++) {
+    calendarDays.push(null);
+  }
+  for (let day = 1; day <= daysInMonth; day++) {
+    calendarDays.push(day);
+  }
+
   return (
     <div className="w-80 space-y-6 h-full">
       {/* Calendar */}
       <div className="bg-white rounded-2xl shadow-lg p-6">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold text-[#1B3D2F]">April 2025</h3>
+          <h3 className="text-lg font-semibold text-[#1B3D2F]">{currentMonth} {currentYear}</h3>
           <Calendar className="w-5 h-5 text-[#6B7280]" />
         </div>
-        
+
         <div className="grid grid-cols-7 gap-2 text-center text-sm">
           {['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'].map((day) => (
             <div key={day} className="text-[#6B7280] font-medium py-2">
               {day.slice(0, 3)}
             </div>
           ))}
-          
-          {['13', '14', '15', '16', '17', '18', '19'].map((date, index) => (
-            <div key={date} className={`py-2 rounded-lg ${
-              index === 3 ? 'bg-[#1B3D2F] text-white font-semibold' : 'text-[#1B3D2F] hover:bg-gray-50'
+
+          {calendarDays.map((day, index) => (
+            <div key={index} className={`py-2 rounded-lg ${
+              day === currentDate ? 'bg-[#1B3D2F] text-white font-semibold' :
+              day ? 'text-[#1B3D2F] hover:bg-gray-50 cursor-pointer' : ''
             }`}>
-              {date}
+              {day || ''}
             </div>
           ))}
         </div>

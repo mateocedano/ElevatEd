@@ -85,12 +85,11 @@ function Dashboard() {
       <div className="max-w-full">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center space-x-2">
-            <GraduationCap className="w-8 h-8 text-blue-600" />
-            <span className="text-2xl font-bold text-[#1B3D2F]">ElevatEd</span>
+          <div className="flex items-center space-x-3">
+            <GraduationCap className="w-10 h-10 text-blue-600" />
+            <span className="text-3xl font-bold text-[#1B3D2F]">ElevatEd</span>
           </div>
           <div className="flex items-center space-x-4">
-            <SearchBar />
             <div className="flex items-center space-x-3">
               <span className="text-sm text-[#6B7280]">
                 Welcome, {user?.user_metadata?.full_name || user?.email}
@@ -127,6 +126,7 @@ function Dashboard() {
 
           {/* Main Content */}
           <div className="flex-1 space-y-6">
+            <SearchBar />
             <QuickActions onStartCourse={() => setShowCourseOverview(true)} />
             
             <CourseProgress 
