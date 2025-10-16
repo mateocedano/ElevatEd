@@ -28,9 +28,9 @@ export default function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
   ];
 
   return (
-    <div className="w-64 bg-white rounded-2xl shadow-lg p-6 h-full flex flex-col">
+    <div className="w-64 bg-white rounded-2xl shadow-lg p-6 h-full">
       {/* Navigation Menu */}
-      <nav className="space-y-3 flex-1 flex flex-col justify-center">
+      <nav className="space-y-3">
         {menuItems.map((item) => {
           const Icon = item.icon;
           const isActive = activeTab === item.id;

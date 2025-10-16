@@ -90,6 +90,7 @@ function Dashboard() {
             <span className="text-3xl font-bold text-[#1B3D2F]">ElevatEd</span>
           </div>
           <div className="flex items-center space-x-4">
+            <SearchBar />
             <div className="flex items-center space-x-3">
               <span className="text-sm text-[#6B7280]">
                 Welcome, {user?.user_metadata?.full_name || user?.email}
@@ -115,18 +116,17 @@ function Dashboard() {
         </div>
 
         {/* Main Layout */}
-        <div className="flex gap-6">
+        <div className="flex gap-6 items-start">
           {/* Left Sidebar */}
           <div className="flex-shrink-0">
-            <Sidebar 
-              activeTab={activeTab} 
+            <Sidebar
+              activeTab={activeTab}
               setActiveTab={setActiveTab}
             />
           </div>
 
           {/* Main Content */}
           <div className="flex-1 space-y-6">
-            <SearchBar />
             <QuickActions onStartCourse={() => setShowCourseOverview(true)} />
             
             <CourseProgress 

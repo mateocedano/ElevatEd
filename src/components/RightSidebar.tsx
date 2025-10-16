@@ -45,18 +45,13 @@ export default function RightSidebar() {
   const currentDate = today.getDate();
   const currentMonth = today.toLocaleString('default', { month: 'long' });
   const currentYear = today.getFullYear();
+  const currentDayOfWeek = today.getDay();
 
-  const firstDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
-  const lastDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
-  const startingDayOfWeek = firstDayOfMonth.getDay();
-  const daysInMonth = lastDayOfMonth.getDate();
-
-  const calendarDays = [];
-  for (let i = 0; i < startingDayOfWeek; i++) {
-    calendarDays.push(null);
-  }
-  for (let day = 1; day <= daysInMonth; day++) {
-    calendarDays.push(day);
+  const weekDays = [];
+  for (let i = 0; i < 7; i++) {
+    const date = new Date(today);
+    date.setDate(today.getDate() - currentDayOfWeek + i);
+    weekDays.push(date.getDate());
   }
 
   return (
@@ -75,12 +70,12 @@ export default function RightSidebar() {
             </div>
           ))}
 
-          {calendarDays.map((day, index) => (
+          {weekDays.map((day, index) => (
             <div key={index} className={`py-2 rounded-lg ${
               day === currentDate ? 'bg-[#1B3D2F] text-white font-semibold' :
-              day ? 'text-[#1B3D2F] hover:bg-gray-50 cursor-pointer' : ''
+              'text-[#1B3D2F] hover:bg-gray-50 cursor-pointer'
             }`}>
-              {day || ''}
+              {day}
             </div>
           ))}
         </div>
