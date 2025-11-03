@@ -3,6 +3,7 @@ import { Calendar, FileText, MessageSquare } from 'lucide-react';
 
 interface QuickActionsProps {
   onStartCourse: () => void;
+  onBookMeeting?: () => void;
 }
 
 const actions = [
@@ -29,7 +30,7 @@ const actions = [
   }
 ];
 
-export default function QuickActions({ onStartCourse }: QuickActionsProps) {
+export default function QuickActions({ onStartCourse, onBookMeeting }: QuickActionsProps) {
   return (
     <div>
       <h2 className="text-2xl font-bold text-[#1B3D2F] mb-4">Quick Actions</h2>
@@ -39,7 +40,9 @@ export default function QuickActions({ onStartCourse }: QuickActionsProps) {
           return (
             <button
               key={action.id}
-              onClick={action.id === 'resume' ? onStartCourse : undefined}
+              onClick={
+                action.id === 'meeting' ? onBookMeeting : action.id === 'resume' ? onStartCourse : undefined
+              }
               className={`relative overflow-hidden bg-gradient-to-br ${action.gradient} rounded-[10px] p-6 text-white text-left transition-all duration-300 hover:scale-105 hover:shadow-xl group`}
               style={{
                 clipPath: 'polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%)'

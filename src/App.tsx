@@ -14,12 +14,14 @@ import ProgressChart from './components/ProgressChart';
 import UpcomingLesson from './components/UpcomingLesson';
 import RightSidebar from './components/RightSidebar';
 import SearchBar from './components/SearchBar';
+import ScheduleMeetingModal from './components/meetings/ScheduleMeetingModal';
 
 function Dashboard() {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [showLessons, setShowLessons] = useState(false);
   const [showCourseOverview, setShowCourseOverview] = useState(false);
   const [showStudentProfile, setShowStudentProfile] = useState(false);
+  const [showMeetingModal, setShowMeetingModal] = useState(false);
   const [selectedStudentId, setSelectedStudentId] = useState<string | null>(null);
   const { user, signOut } = useAuth();
 
@@ -127,7 +129,10 @@ function Dashboard() {
 
           {/* Main Content */}
           <div className="flex-1 space-y-6">
-            <QuickActions onStartCourse={() => setShowCourseOverview(true)} />
+            <QuickActions
+              onStartCourse={() => setShowCourseOverview(true)}
+              onBookMeeting={() => setShowMeetingModal(true)}
+            />
             
             <CourseProgress 
               onContinue={() => setShowLessons(true)}
@@ -146,6 +151,11 @@ function Dashboard() {
           </div>
         </div>
       </div>
+
+      <ScheduleMeetingModal
+        isOpen={showMeetingModal}
+        onClose={() => setShowMeetingModal(false)}
+      />
     </div>
   );
 }
