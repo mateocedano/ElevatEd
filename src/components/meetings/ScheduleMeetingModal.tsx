@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { X, Download, ExternalLink, ArrowRight } from 'lucide-react';
 import { useAvailability } from './useAvailability';
+import CalendarDatePicker from './CalendarDatePicker';
 
 interface BookingDetails {
   name: string;
@@ -225,28 +226,12 @@ END:VCALENDAR`;
                   </select>
                 </div>
 
-                {/* Date Grid */}
-                <div>
-                  <label className="block text-sm font-medium text-[#1B3D2F] mb-3">
-                    Select a date
-                  </label>
-                  <div className="grid grid-cols-7 gap-2">
-                    {availability.slice(0, 14).map((day) => (
-                      <button
-                        key={day.dateString}
-                        onClick={() => setSelectedDate(day.dateString)}
-                        className={`py-2 text-xs font-medium rounded-lg transition-colors ${
-                          selectedDate === day.dateString
-                            ? 'bg-[#1B3D2F] text-white'
-                            : 'border border-gray-200 text-[#1B3D2F] hover:border-[#1B3D2F]'
-                        }`}
-                      >
-                        <div>{day.dayOfWeek}</div>
-                        <div>{new Date(day.date).getDate()}</div>
-                      </button>
-                    ))}
-                  </div>
-                </div>
+                {/* Calendar Date Picker */}
+                <CalendarDatePicker
+                  selectedDate={selectedDate}
+                  onDateSelect={setSelectedDate}
+                  availability={availability}
+                />
 
                 {/* Time Slots */}
                 {selectedDate && (
