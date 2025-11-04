@@ -15,6 +15,7 @@ import UpcomingLesson from './components/UpcomingLesson';
 import RightSidebar from './components/RightSidebar';
 import SearchBar from './components/SearchBar';
 import ScheduleMeetingModal from './components/meetings/ScheduleMeetingModal';
+import CalendarPage from './pages/Calendar';
 
 function Dashboard() {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -22,6 +23,7 @@ function Dashboard() {
   const [showCourseOverview, setShowCourseOverview] = useState(false);
   const [showStudentProfile, setShowStudentProfile] = useState(false);
   const [showMeetingModal, setShowMeetingModal] = useState(false);
+  const [showCalendar, setShowCalendar] = useState(false);
   const [selectedStudentId, setSelectedStudentId] = useState<string | null>(null);
   const { user, signOut } = useAuth();
 
@@ -48,7 +50,7 @@ function Dashboard() {
 
   if (showStudentProfile && selectedStudentId) {
     return (
-      <StudentProfile 
+      <StudentProfile
         studentId={selectedStudentId}
         onBackToAdvisor={() => {
           setShowStudentProfile(false);
@@ -57,6 +59,10 @@ function Dashboard() {
         }}
       />
     );
+  }
+
+  if (showCalendar) {
+    return <CalendarPage />;
   }
 
   // Handle advisor view
@@ -72,14 +78,18 @@ function Dashboard() {
   // Handle sidebar navigation
   if (activeTab === 'lessons') {
     return (
-      <CourseOverviewPage 
-        onBackToDashboard={() => setActiveTab('dashboard')} 
+      <CourseOverviewPage
+        onBackToDashboard={() => setActiveTab('dashboard')}
         onStartCourse={() => {
           setActiveTab('dashboard');
           setShowLessons(true);
         }}
       />
     );
+  }
+
+  if (activeTab === 'calendar') {
+    return <CalendarPage />;
   }
 
   return (
