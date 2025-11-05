@@ -62,7 +62,7 @@ function Dashboard() {
   }
 
   if (showCalendar) {
-    return <CalendarPage />;
+    return <CalendarPage onBackToDashboard={() => setShowCalendar(false)} />;
   }
 
   // Handle advisor view
@@ -89,7 +89,7 @@ function Dashboard() {
   }
 
   if (activeTab === 'calendar') {
-    return <CalendarPage />;
+    return <CalendarPage onBackToDashboard={() => setActiveTab('dashboard')} />;
   }
 
   return (

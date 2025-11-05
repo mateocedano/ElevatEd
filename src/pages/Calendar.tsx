@@ -41,7 +41,7 @@ export default function CalendarPage({ onBackToDashboard }: CalendarPageProps) {
             className="flex items-center gap-2 px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span className="text-sm font-medium">Back to Dashboard</span>
+            <span className="text-sm font-medium">Back</span>
           </button>
 
           {/* Center: Navigation & Title */}
