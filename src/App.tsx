@@ -27,6 +27,8 @@ function Dashboard() {
   const [selectedStudentId, setSelectedStudentId] = useState<string | null>(null);
   const { user, signOut } = useAuth();
 
+  const isAdvisor = user?.user_metadata?.role === 'advisor';
+
   const handleViewStudentProfile = (studentId: string) => {
     setSelectedStudentId(studentId);
     setShowStudentProfile(true);
@@ -36,22 +38,6 @@ function Dashboard() {
     await signOut();
   };
 
-  if (showLessons) {
-    return <LessonsPage onBackToDashboard={() => setShowLessons(false)} />;
-  }
-
-  if (showCourseOverview) {
-    return (
-      <CourseOverviewPage 
-        onBackToDashboard={() => setShowCourseOverview(false)} 
-        onStartCourse={() => {
-          setShowCourseOverview(false);
-          setShowLessons(true);
-        }}
-      />
-    );
-  }
-
   if (showStudentProfile && selectedStudentId) {
     return (
       <StudentProfile
@@ -59,7 +45,31 @@ function Dashboard() {
         onBackToAdvisor={() => {
           setShowStudentProfile(false);
           setSelectedStudentId(null);
-          setActiveTab('advisor-view');
+        }}
+      />
+    );
+  }
+
+  if (isAdvisor) {
+    return (
+      <AdvisorDashboard
+        onBackToStudent={() => {}}
+        onViewStudentProfile={handleViewStudentProfile}
+      />
+    );
+  }
+
+  if (showLessons) {
+    return <LessonsPage onBackToDashboard={() => setShowLessons(false)} />;
+  }
+
+  if (showCourseOverview) {
+    return (
+      <CourseOverviewPage
+        onBackToDashboard={() => setShowCourseOverview(false)}
+        onStartCourse={() => {
+          setShowCourseOverview(false);
+          setShowLessons(true);
         }}
       />
     );
@@ -69,10 +79,10 @@ function Dashboard() {
     return <CalendarPage onBackToDashboard={() => setShowCalendar(false)} />;
   }
 
-  // Handle advisor view
+  // Handle advisor view for students
   if (activeTab === 'advisor-view') {
     return (
-      <AdvisorDashboard 
+      <AdvisorDashboard
         onBackToStudent={() => setActiveTab('dashboard')}
         onViewStudentProfile={handleViewStudentProfile}
       />
@@ -138,6 +148,7 @@ function Dashboard() {
             <Sidebar
               activeTab={activeTab}
               setActiveTab={setActiveTab}
+              isAdvisor={isAdvisor}
             />
           </div>
 
