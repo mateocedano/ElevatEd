@@ -114,6 +114,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     setLoading(true);
     const { error } = await auth.signOut();
+
+    // Clear user and session state
+    setUser(null);
+    setSession(null);
+
     setLoading(false);
     return { error };
   };

@@ -32,6 +32,10 @@ function Dashboard() {
     setShowStudentProfile(true);
   };
 
+  const handleSignOut = async () => {
+    await signOut();
+  };
+
   if (showLessons) {
     return <LessonsPage onBackToDashboard={() => setShowLessons(false)} />;
   }
@@ -108,7 +112,7 @@ function Dashboard() {
                 Welcome, {user?.user_metadata?.full_name || user?.email}
               </span>
               <button
-                onClick={signOut}
+                onClick={handleSignOut}
                 className="text-sm text-[#6B7280] hover:text-[#1B3D2F] underline"
               >
                 Sign Out
