@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { GraduationCap, Bell, User } from 'lucide-react';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import AuthPage from './components/auth/AuthPage';
+import AdvisorAuthPage from './components/auth/AdvisorAuthPage';
 import LoadingSpinner from './components/LoadingSpinner';
 import LessonsPage from './components/LessonsPage';
 import CourseOverviewPage from './components/CourseOverviewPage';
@@ -187,12 +188,25 @@ function Dashboard() {
 
 function AppContent() {
   const { user, loading } = useAuth();
+  const [currentRoute, setCurrentRoute] = useState(window.location.pathname);
+
+  useEffect(() => {
+    const handleLocationChange = () => {
+      setCurrentRoute(window.location.pathname);
+    };
+
+    window.addEventListener('popstate', handleLocationChange);
+    return () => window.removeEventListener('popstate', handleLocationChange);
+  }, []);
 
   if (loading) {
     return <LoadingSpinner />;
   }
 
   if (!user) {
+    if (currentRoute === '/advisor-login') {
+      return <AdvisorAuthPage />;
+    }
     return <AuthPage />;
   }
 
