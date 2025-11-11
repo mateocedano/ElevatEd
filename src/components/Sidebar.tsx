@@ -1,14 +1,13 @@
 import React from 'react';
-import { 
-  Home, 
-  Bell, 
-  Calendar, 
-  BookOpen, 
-  Users, 
-  Briefcase, 
+import {
+  Home,
+  Bell,
+  Calendar,
+  BookOpen,
+  Users,
+  Briefcase,
   Settings,
-  GraduationCap,
-  UserCheck
+  GraduationCap
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -25,7 +24,6 @@ export default function Sidebar({ activeTab, setActiveTab, isAdvisor = false }: 
     { id: 'career-resources', icon: Users, label: 'Career Resources' },
     { id: 'job-matches', icon: Briefcase, label: 'Job Matches' },
     { id: 'settings', icon: Settings, label: 'Settings' },
-    { id: 'advisor-view', icon: UserCheck, label: 'Advisor View' },
   ];
 
   const advisorMenuItems = [
