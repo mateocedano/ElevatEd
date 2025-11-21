@@ -8,7 +8,8 @@ import {
   Briefcase, 
   Settings,
   GraduationCap,
-  UserCheck
+  UserCheck,
+  Mic
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -23,6 +24,7 @@ export default function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
     { id: 'lessons', icon: BookOpen, label: 'Lessons' },
     { id: 'career-resources', icon: Users, label: 'Career Resources' },
     { id: 'job-matches', icon: Briefcase, label: 'Job Matches' },
+    { id: 'mock-interview', icon: Mic, label: 'Mock Interview' },
     { id: 'settings', icon: Settings, label: 'Settings' },
     { id: 'advisor-view', icon: UserCheck, label: 'Advisor View' },
   ];

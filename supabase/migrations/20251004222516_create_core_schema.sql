@@ -207,6 +207,11 @@ CREATE POLICY "Students can update own data"
   USING (auth.uid() = id)
   WITH CHECK (auth.uid() = id);
 
+CREATE POLICY "System can insert students"
+  ON students FOR INSERT
+  TO authenticated
+  WITH CHECK (auth.uid() = id);
+
 -- Create advisor_student_assignments table
 CREATE TABLE IF NOT EXISTS advisor_student_assignments (
   id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
@@ -407,21 +412,21 @@ BEGIN
   INSERT INTO public.profiles (id, full_name, email, role)
   VALUES (
     NEW.id,
-    COALESCE(NEW.raw_user_meta_data->>'full_name', 'New User'),
+    COALESCE(NEW.raw_user_meta_data->>'full_name', split_part(NEW.email, '@', 1)),
     NEW.email,
     COALESCE(NEW.raw_user_meta_data->>'role', 'student')
   );
-  
+
   -- If user is a student, create student record
   IF COALESCE(NEW.raw_user_meta_data->>'role', 'student') = 'student' THEN
     INSERT INTO public.students (id, cohort, major)
     VALUES (
       NEW.id,
-      COALESCE(NEW.raw_user_meta_data->>'cohort', 'Class of 2025'),
+      COALESCE(NEW.raw_user_meta_data->>'cohort', 'Class of 2026'),
       COALESCE(NEW.raw_user_meta_data->>'major', 'Undeclared')
     );
   END IF;
-  
+
   RETURN NEW;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;

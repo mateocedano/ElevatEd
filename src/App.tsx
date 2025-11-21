@@ -14,6 +14,7 @@ import ProgressChart from './components/ProgressChart';
 import UpcomingLesson from './components/UpcomingLesson';
 import RightSidebar from './components/RightSidebar';
 import SearchBar from './components/SearchBar';
+import InterviewPage from './components/interview/InterviewPage';
 
 function Dashboard() {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -63,6 +64,15 @@ function Dashboard() {
       <AdvisorDashboard 
         onBackToStudent={() => setActiveTab('dashboard')}
         onViewStudentProfile={handleViewStudentProfile}
+      />
+    );
+  }
+
+  // Handle mock interview view
+  if (activeTab === 'mock-interview') {
+    return (
+      <InterviewPage 
+        onBack={() => setActiveTab('dashboard')}
       />
     );
   }
