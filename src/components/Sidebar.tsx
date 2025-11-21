@@ -1,11 +1,11 @@
 import React from 'react';
-import { 
-  Home, 
-  Bell, 
-  Calendar, 
-  BookOpen, 
-  Users, 
-  Briefcase, 
+import {
+  Home,
+  Bell,
+  Calendar,
+  BookOpen,
+  Users,
+  Briefcase,
   Settings,
   GraduationCap,
   UserCheck,
@@ -15,10 +15,11 @@ import {
 interface SidebarProps {
   activeTab: string;
   setActiveTab: (tab: string) => void;
+  isAdvisor?: boolean;
 }
 
-export default function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
-  const menuItems = [
+export default function Sidebar({ activeTab, setActiveTab, isAdvisor = false }: SidebarProps) {
+  const studentMenuItems = [
     { id: 'dashboard', icon: Home, label: 'Dashboard' },
     { id: 'calendar', icon: Calendar, label: 'Calendar' },
     { id: 'lessons', icon: BookOpen, label: 'Lessons' },
@@ -26,8 +27,18 @@ export default function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
     { id: 'job-matches', icon: Briefcase, label: 'Job Matches' },
     { id: 'mock-interview', icon: Mic, label: 'Mock Interview' },
     { id: 'settings', icon: Settings, label: 'Settings' },
-    { id: 'advisor-view', icon: UserCheck, label: 'Advisor View' },
   ];
+
+  const advisorMenuItems = [
+    { id: 'dashboard', icon: Home, label: 'Dashboard' },
+    { id: 'calendar', icon: Calendar, label: 'Calendar' },
+    { id: 'lessons', icon: BookOpen, label: 'Lessons' },
+    { id: 'career-resources', icon: Users, label: 'Career Resources' },
+    { id: 'job-matches', icon: Briefcase, label: 'Job Matches' },
+    { id: 'settings', icon: Settings, label: 'Settings' },
+  ];
+
+  const menuItems = isAdvisor ? advisorMenuItems : studentMenuItems;
 
   return (
     <div className="w-64 bg-white rounded-2xl shadow-lg p-6 h-full">

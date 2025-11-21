@@ -20,6 +20,10 @@ interface AuthContextType {
     email: string,
     password: string
   ) => Promise<{ error: AuthError | CustomError | null }>;
+  signInAdvisor: (
+    email: string,
+    password: string
+  ) => Promise<{ error: AuthError | CustomError | null }>;
   signOut: () => Promise<{ error: AuthError | CustomError | null }>;
 }
 
@@ -108,12 +112,38 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return { error };
   };
 
+  const signInAdvisor = async (email: string, password: string) => {
+    setLoading(true);
+    const { data, error } = await auth.signIn(email, password);
+
+    // If login was successful, update the user state with advisor role
+    if (data?.user && !error) {
+      const advisorUser = {
+        ...data.user,
+        user_metadata: {
+          ...data.user.user_metadata,
+          role: 'advisor'
+        }
+      };
+      setUser(advisorUser);
+      setSession(data.session);
+    }
+
+    setLoading(false);
+    return { error };
+  };
+
   const signOut = async () => {
     // Clear demo user if present
     sessionStorage.removeItem('demoUser');
 
     setLoading(true);
     const { error } = await auth.signOut();
+
+    // Clear user and session state
+    setUser(null);
+    setSession(null);
+
     setLoading(false);
     return { error };
   };
@@ -124,6 +154,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     loading,
     signUp,
     signIn,
+    signInAdvisor,
     signOut,
   };
 

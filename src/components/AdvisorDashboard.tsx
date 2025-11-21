@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { 
-  AlertTriangle, 
-  Clock, 
-  TrendingUp, 
+import {
+  AlertTriangle,
+  Clock,
+  TrendingUp,
   Calendar,
   Users,
   FileText,
   ChevronDown,
-  ArrowLeft,
   Search,
   Plus,
   Download,
@@ -20,6 +19,7 @@ import {
   Eye,
   Edit3
 } from 'lucide-react';
+import { useAuth } from '../contexts/AuthContext';
 
 // Mock Data
 const mockStudents = [
@@ -290,6 +290,7 @@ interface AdvisorDashboardProps {
 }
 
 export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile }: AdvisorDashboardProps) {
+  const { signOut } = useAuth();
   const [chartType, setChartType] = useState('Weekly Logins');
   const [cohortFilter, setCohortFilter] = useState('All Students');
   const [searchQuery, setSearchQuery] = useState('');
@@ -367,24 +368,20 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
     }
     return value.toString();
   };
+
+  const handleSignOut = async () => {
+    await signOut();
+    window.location.href = '/advisor-login';
+  };
   return (
     <div className="min-h-screen bg-[#EAF4F1] p-6">
       <div className="max-w-full">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center space-x-4">
-            <button
-              onClick={onBackToStudent}
-              className="flex items-center space-x-2 text-[#6B7280] hover:text-[#1B3D2F] transition-colors duration-200"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              <span>Back to Student View</span>
-            </button>
-            <h1 className="text-4xl font-bold text-[#1B3D2F]">Advisor Dashboard</h1>
-          </div>
-          
+          <h1 className="text-4xl font-bold text-[#1B3D2F]">Advisor Dashboard</h1>
+
           {/* Top Right Controls */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-3">
             {/* Student Search */}
             <div className="relative">
               <div className="relative">
@@ -430,7 +427,7 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
                 <span className="text-sm font-medium text-[#1B3D2F]">Export</span>
                 <ChevronDown className="w-4 h-4 text-[#6B7280]" />
               </button>
-              
+
               {showExportMenu && (
                 <div className="absolute top-full right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-50 min-w-32">
                   <button
@@ -448,6 +445,14 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
                 </div>
               )}
             </div>
+
+            {/* Sign Out Button */}
+            <button
+              onClick={handleSignOut}
+              className="text-sm text-[#6B7280] hover:text-[#1B3D2F] underline"
+            >
+              Sign Out
+            </button>
           </div>
         </div>
 
