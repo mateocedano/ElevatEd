@@ -42,18 +42,25 @@ export default function InterviewPage({ onBack }: InterviewPageProps) {
   // For this prototype, we'll use a manual "Send" or "Stop Listening" trigger to commit the answer.
 
   const [error, setError] = useState<string | null>(null);
+  const [topic, setTopic] = useState('');
+  const [interviewerName, setInterviewerName] = useState('Ed');
 
   const handleStartSession = async () => {
-    setSessionStarted(true);
+    if (!topic.trim()) return;
+    
+    setIsProcessing(true);
     setError(null);
-    const greeting = await interviewService.startSession();
+    
+    const greeting = await interviewService.startSession(topic, interviewerName || "Ed");
+    
+    setIsProcessing(false);
     
     if (greeting.startsWith("Error:")) {
       setError(greeting);
-      setSessionStarted(false);
       return;
     }
 
+    setSessionStarted(true);
     setMessages([{ role: 'assistant', content: greeting }]);
     speak(greeting);
   };
@@ -124,25 +131,66 @@ export default function InterviewPage({ onBack }: InterviewPageProps) {
         {/* Visualizer / Status Area */}
         <div className="bg-white rounded-2xl shadow-lg p-8 min-h-[300px] flex flex-col items-center justify-center relative overflow-hidden">
           {!sessionStarted ? (
-            <div className="text-center z-10">
+            <div className="text-center z-10 w-full max-w-md mx-auto">
               <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Volume2 className="w-10 h-10 text-blue-600" />
               </div>
-              <h2 className="text-2xl font-bold text-[#1B3D2F] mb-3">Ready to practice?</h2>
-              <p className="text-[#6B7280] mb-8 max-w-md mx-auto">
-                Our AI interviewer will ask you common interview questions. Speak naturally, and we'll provide feedback on your responses.
+              <h2 className="text-2xl font-bold text-[#1B3D2F] mb-3">Mock Interview Setup</h2>
+              <p className="text-[#6B7280] mb-6">
+                What role or topic would you like to practice for today?
               </p>
+              
+              <div className="mb-6 space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1 text-left">Interview Topic</label>
+                  <input
+                    type="text"
+                    value={topic}
+                    onChange={(e) => setTopic(e.target.value)}
+                    placeholder="e.g. Junior React Developer"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#1B3D2F] focus:ring-2 focus:ring-[#1B3D2F]/20 outline-none transition-all"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1 text-left">Interviewer Name</label>
+                  <input
+                    type="text"
+                    value={interviewerName}
+                    onChange={(e) => setInterviewerName(e.target.value)}
+                    placeholder="e.g. Ed"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#1B3D2F] focus:ring-2 focus:ring-[#1B3D2F]/20 outline-none transition-all"
+                    onKeyDown={(e) => e.key === 'Enter' && topic && handleStartSession()}
+                  />
+                </div>
+              </div>
+
               {error && (
-                <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm max-w-md mx-auto">
-                  {error}
+                <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+                  {error === "Error: INVALID_TOPIC" 
+                    ? "That doesn't seem to be a valid interview topic. Please try a professional role or scenario."
+                    : error}
                 </div>
               )}
+
               <button 
                 onClick={handleStartSession}
-                className="px-8 py-3 bg-[#1B3D2F] text-white rounded-full font-semibold hover:bg-[#152e24] transition-all transform hover:scale-105 flex items-center mx-auto"
+                disabled={!topic.trim() || isProcessing}
+                className={`px-8 py-3 bg-[#1B3D2F] text-white rounded-full font-semibold transition-all transform hover:scale-105 flex items-center mx-auto ${
+                  (!topic.trim() || isProcessing) ? 'opacity-50 cursor-not-allowed hover:scale-100' : 'hover:bg-[#152e24]'
+                }`}
               >
-                <Play className="w-5 h-5 mr-2" />
-                Start Interview
+                {isProcessing ? (
+                  <>
+                    <RefreshCw className="w-5 h-5 mr-2 animate-spin" />
+                    Setting up...
+                  </>
+                ) : (
+                  <>
+                    <Play className="w-5 h-5 mr-2" />
+                    Start Interview
+                  </>
+                )}
               </button>
             </div>
           ) : (
