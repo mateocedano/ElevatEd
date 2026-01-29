@@ -1,6 +1,9 @@
 
 import Anthropic from '@anthropic-ai/sdk';
 
+
+import defaultSystemPrompt from '../prompts/interview-system-prompt.txt?raw';
+
 export interface Message {
   role: 'user' | 'assistant';
   content: string;
@@ -47,16 +50,17 @@ class InterviewService {
     }
   }
 
-  async startSession(topic: string, interviewerName: string = "Ed"): Promise<string> {
+  async startSession(topic: string = "Behavioral Interview", interviewerName: string = "Interviewer", customPrompt?: string): Promise<string> {
     if (!this.anthropic) {
       return "Error: API Key not configured. Please add VITE_ANTHROPIC_API_KEY to your .env.local file.";
     }
 
-    // Validate first
-    const isValid = await this.validateTopic(topic);
-    if (!isValid) {
-      return "Error: INVALID_TOPIC";
-    }
+    // Validate first (skip validation for default behavioral, or keep it loosely)
+    // For this simplified flow, we trust the default or user input if ever re-enabled.
+    // const isValid = await this.validateTopic(topic);
+    // if (!isValid) {
+    //   return "Error: INVALID_TOPIC";
+    // }
 
     this.currentTopic = topic;
     this.interviewerName = interviewerName;
@@ -64,10 +68,15 @@ class InterviewService {
     
     // Generate dynamic greeting based on topic
     try {
+      const promptTemplate = customPrompt || defaultSystemPrompt;
+      const systemPrompt = promptTemplate
+        .replace(/{{interviewerName}}/g, interviewerName)
+        .replace(/{{topic}}/g, topic);
+
       const response = await this.anthropic.messages.create({
         model: "claude-3-haiku-20240307",
         max_tokens: 150,
-        system: `You are a professional interviewer named ${interviewerName}. The user wants to practice for the following interview: "${topic}". Start by introducing yourself as ${interviewerName} and the role you are interviewing for, and ask if they are ready. Keep it concise.`,
+        system: systemPrompt + "\n\nStart by introducing yourself and the role you are interviewing for, and ask if they are ready. Keep it concise.",
         messages: [{ role: 'user', content: "Start the interview." }]
       });
 
@@ -81,13 +90,13 @@ class InterviewService {
 
       this.history.push({ role: 'assistant', content: greeting });
       return greeting;
-    } catch (e: any) {
+    } catch (e: unknown) {
       console.error("Error generating greeting:", e);
       return "Error: Failed to start session. Please try again.";
     }
   }
 
-  async processUserResponse(userText: string): Promise<string> {
+  async processUserResponse(userText: string, customPrompt?: string): Promise<string> {
     if (!this.anthropic) {
       return "Service not initialized. Please check your API key.";
     }
@@ -96,12 +105,10 @@ class InterviewService {
       // Add user message to history
       this.history.push({ role: 'user', content: userText });
 
-      const systemPrompt = `You are a professional, encouraging, but rigorous job interviewer named ${this.interviewerName} conducting an interview for: "${this.currentTopic}". 
-      - Always stay in character as ${this.interviewerName}.
-      - Keep your responses concise (under 3 sentences) to keep the conversation flowing. 
-      - Ask one relevant behavioral or technical question at a time.
-      - Do not provide feedback yet, just conduct the interview.
-      - If the user says "stop" or "end interview", give them a brief summary of their performance.`;
+      const promptTemplate = customPrompt || defaultSystemPrompt;
+      const systemPrompt = promptTemplate
+        .replace(/{{interviewerName}}/g, this.interviewerName)
+        .replace(/{{topic}}/g, this.currentTopic);
 
       const response = await this.anthropic.messages.create({
         model: "claude-3-haiku-20240307",
@@ -123,20 +130,22 @@ class InterviewService {
       this.history.push({ role: 'assistant', content: reply });
       
       return reply;
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Anthropic API Error:", error);
       
       // Remove the user message that failed so we don't get into a bad state
       this.history.pop();
       
-      if (error.message?.includes("401")) {
+      const errorMessage = error instanceof Error ? error.message : "Unknown error";
+
+      if (errorMessage.includes("401")) {
         return "Error: Invalid Anthropic API Key. Please check your .env.local file.";
       }
-      if (error.message?.includes("credit")) {
+      if (errorMessage.includes("credit")) {
         return "Error: You may be out of Anthropic API credits.";
       }
       
-      return `I encountered an error: ${error.message || "Unknown error"}. Please try again.`;
+      return `I encountered an error: ${errorMessage}. Please try again.`;
     }
   }
 }
