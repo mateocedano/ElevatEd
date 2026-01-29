@@ -1,8 +1,8 @@
-import React from 'react';
+
 import { Calendar, FileText, MessageSquare } from 'lucide-react';
 
 interface QuickActionsProps {
-  onStartCourse: () => void;
+  onStartCourse: (tab?: string) => void;
   onBookMeeting?: () => void;
 }
 
@@ -41,7 +41,10 @@ export default function QuickActions({ onStartCourse, onBookMeeting }: QuickActi
             <button
               key={action.id}
               onClick={
-                action.id === 'meeting' ? onBookMeeting : action.id === 'resume' ? onStartCourse : undefined
+                action.id === 'meeting' ? onBookMeeting : 
+                action.id === 'resume' ? () => onStartCourse('resume-review') : 
+                action.id === 'interview' ? () => onStartCourse('mock-interview') :
+                undefined
               }
               className={`relative overflow-hidden bg-gradient-to-br ${action.gradient} rounded-[10px] p-6 text-white text-left transition-all duration-300 hover:scale-105 hover:shadow-xl group`}
               style={{
