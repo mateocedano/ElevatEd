@@ -1,12 +1,15 @@
+import React from 'react';
 import {
   Home,
+  Bell,
   Calendar,
   BookOpen,
   Users,
   Briefcase,
   Settings,
-  Mic,
-  FileText
+  GraduationCap,
+  UserCheck,
+  Mic
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -22,7 +25,6 @@ export default function Sidebar({ activeTab, setActiveTab, isAdvisor = false }: 
     { id: 'lessons', icon: BookOpen, label: 'Lessons' },
     { id: 'career-resources', icon: Users, label: 'Career Resources' },
     { id: 'job-matches', icon: Briefcase, label: 'Job Matches' },
-    { id: 'resume-review', icon: FileText, label: 'Resume Review' },
     { id: 'mock-interview', icon: Mic, label: 'Mock Interview' },
     { id: 'settings', icon: Settings, label: 'Settings' },
   ];

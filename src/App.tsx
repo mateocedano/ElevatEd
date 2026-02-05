@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { GraduationCap, Bell } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { GraduationCap, Bell, User } from 'lucide-react';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import AuthPage from './components/auth/AuthPage';
 import AdvisorAuthPage from './components/auth/AdvisorAuthPage';
@@ -16,7 +16,6 @@ import UpcomingLesson from './components/UpcomingLesson';
 import RightSidebar from './components/RightSidebar';
 import SearchBar from './components/SearchBar';
 import InterviewPage from './components/interview/InterviewPage';
-import ResumeReviewPage from './components/resume/ResumeReviewPage';
 import ScheduleMeetingModal from './components/meetings/ScheduleMeetingModal';
 import CalendarPage from './pages/Calendar';
 
@@ -101,15 +100,6 @@ function Dashboard() {
     );
   }
 
-  // Handle resume review view
-  if (activeTab === 'resume-review') {
-    return (
-      <ResumeReviewPage 
-        onBack={() => setActiveTab('dashboard')}
-      />
-    );
-  }
-
   // Handle sidebar navigation
   if (activeTab === 'lessons') {
     return (
@@ -176,13 +166,7 @@ function Dashboard() {
           {/* Main Content */}
           <div className="flex-1 space-y-6">
             <QuickActions
-              onStartCourse={(tab) => {
-                if (tab) {
-                  setActiveTab(tab);
-                } else {
-                  setShowCourseOverview(true);
-                }
-              }}
+              onStartCourse={() => setShowCourseOverview(true)}
               onBookMeeting={() => setShowMeetingModal(true)}
             />
             
