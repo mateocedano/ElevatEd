@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Mic, Volume2, ArrowLeft, Play, Square, RefreshCw, Settings2, X } from 'lucide-react';
+import { Mic, Volume2, ArrowLeft, Play, Square, RefreshCw, Settings2, X, CheckCircle, Sparkles } from 'lucide-react';
 import defaultSystemPrompt from '../../prompts/interview-system-prompt.txt?raw';
 import { useSpeech } from '../../hooks/useSpeech';
 import { interviewService } from '../../services/interviewService';
@@ -24,6 +24,8 @@ export default function InterviewPage({ onBack }: InterviewPageProps) {
   const [messages, setMessages] = useState<{role: 'user' | 'assistant', content: string}[]>([]);
   const [currentTranscript, setCurrentTranscript] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
+  const [sessionEnded, setSessionEnded] = useState(false);
+  const [summary, setSummary] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Auto-scroll to bottom
@@ -91,6 +93,33 @@ export default function InterviewPage({ onBack }: InterviewPageProps) {
       speak(response);
     } catch (error) {
       console.error("Error processing response:", error);
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+  const handleEndSession = async () => {
+    cancelSpeech();
+    setIsProcessing(true);
+    setSessionEnded(true);
+
+    try {
+      const interviewSummary = await interviewService.summarizeInterview(messages);
+      setSummary(interviewSummary);
+
+      // Persist locally for the demo user
+      const savedInterviews = JSON.parse(localStorage.getItem('demo_interviews') || '[]');
+      savedInterviews.push({
+        id: Date.now(),
+        date: new Date().toISOString().split('T')[0],
+        type: 'Behavioral',
+        summary: interviewSummary,
+        transcript: messages
+      });
+      localStorage.setItem('demo_interviews', JSON.stringify(savedInterviews));
+    } catch (err) {
+      console.error("Failed to summarize interview", err);
+      setSummary("Error generating interview summary.");
     } finally {
       setIsProcessing(false);
     }
@@ -237,9 +266,43 @@ export default function InterviewPage({ onBack }: InterviewPageProps) {
                 Microphone access required
               </p>
             </div>
-          ) : (
-            <div className="w-full flex flex-col h-full">
-              {/* Header / Status */}
+            <div className="w-full flex flex-col h-full bg-white rounded-2xl shadow-lg p-8 relative overflow-hidden">
+              {sessionEnded ? (
+                <div className="flex flex-col items-center justify-center py-12 px-4 z-10 animate-in fade-in zoom-in-95 duration-500">
+                  <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mb-6">
+                    <CheckCircle className="w-10 h-10 text-emerald-600" />
+                  </div>
+                  <h2 className="text-3xl font-bold text-[#1B3D2F] mb-2 tracking-tight">Interview Complete</h2>
+                  <p className="text-gray-500 mb-10">Great job! Here is a summary of your performance.</p>
+                  
+                  {isProcessing ? (
+                    <div className="flex flex-col items-center justify-center p-8 bg-gray-50 rounded-xl w-full max-w-2xl border border-gray-100">
+                      <RefreshCw className="w-8 h-8 text-[#1B3D2F] animate-spin mb-4" />
+                      <p className="text-gray-600 font-medium tracking-wide">AI is analyzing your transcript...</p>
+                    </div>
+                  ) : (
+                    <div className="w-full max-w-2xl bg-[#EAF4F1] border border-emerald-100 p-8 rounded-2xl shadow-sm text-left">
+                      <h4 className="font-bold text-[#1B3D2F] text-lg mb-4 flex items-center">
+                        <Sparkles className="w-5 h-5 mr-2 text-emerald-600" />
+                        Advisor Summary
+                      </h4>
+                      <div className="text-gray-700 leading-relaxed space-y-4">
+                        {summary}
+                      </div>
+                      <div className="mt-8 flex justify-center">
+                        <button 
+                          onClick={onBack}
+                          className="px-8 py-3 bg-[#1B3D2F] text-white rounded-xl font-medium shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all text-sm"
+                        >
+                          Return to Dashboard
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="flex flex-col h-full z-10">
+                  {/* Header / Status */}
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
                   <div className={`w-3 h-3 rounded-full ${isListening ? 'bg-red-500 animate-pulse' : 'bg-gray-300'}`} />
@@ -300,7 +363,7 @@ export default function InterviewPage({ onBack }: InterviewPageProps) {
               </div>
 
               {/* Controls */}
-              <div className="flex items-center justify-center gap-6 pb-6 border-b border-gray-100 mb-6">
+              <div className="flex items-center justify-center gap-6 pb-6 border-b border-gray-100 mb-6 relative">
                 <button
                   onClick={toggleListening}
                   className={`relative group w-20 h-20 rounded-full flex items-center justify-center transition-all duration-300 ${
@@ -311,6 +374,14 @@ export default function InterviewPage({ onBack }: InterviewPageProps) {
                 >
                   <div className={`absolute inset-0 rounded-full border-2 border-white/20 scale-110 ${isListening ? 'animate-ping opacity-20' : 'opacity-0'}`} />
                   {isListening ? <Square className="w-8 h-8 fill-current" /> : <Mic className="w-8 h-8" />}
+                </button>
+
+                <button
+                  onClick={handleEndSession}
+                  className="absolute right-0 top-1/2 -translate-y-1/2 px-6 py-3 bg-red-50 text-red-600 font-medium rounded-xl hover:bg-red-100 transition-colors flex items-center border border-red-100"
+                >
+                  <Square className="w-4 h-4 mr-2" />
+                  End Interview
                 </button>
               </div>
 
@@ -345,7 +416,7 @@ export default function InterviewPage({ onBack }: InterviewPageProps) {
 
             </div>
           )}
-
+          
           {/* Background decoration */}
           <div className="absolute inset-0 opacity-5 pointer-events-none overflow-hidden rounded-2xl">
             <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500 rounded-full filter blur-3xl transform -translate-x-1/2 -translate-y-1/2 opacity-50"></div>
