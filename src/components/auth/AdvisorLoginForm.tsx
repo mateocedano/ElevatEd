@@ -31,10 +31,10 @@ export default function AdvisorLoginForm() {
     setIsDemoLoading(true);
 
     const mockAdvisor = {
-      id: 'demo-advisor-id',
-      email: 'advisor@elevated.app',
+      id: 'advisor-1',
+      email: 'dr.smith@university.edu',
       user_metadata: {
-        full_name: 'Demo Advisor',
+        full_name: 'Dr. Smith',
         role: 'advisor'
       }
     } as any;

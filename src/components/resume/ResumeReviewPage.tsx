@@ -70,6 +70,20 @@ export default function ResumeReviewPage({ onBack }: ResumeReviewPageProps) {
         setError(result);
       } else {
         setReview(result);
+        
+        // Persist locally for demo
+        const savedReview = {
+          score: 'A-', // Simulated score
+          lastUpdated: 'Just now',
+          beforeText: 'Original resume uploaded for review.',
+          afterText: 'Analyzed using ElevatEd AI Advisor.',
+          advisorComments: [
+               'This resume has been reviewed by ElevatEd AI.',
+               'Review details are available in the main text.'
+          ],
+          fullReview: result
+        };
+        localStorage.setItem('demo_resume_review', JSON.stringify(savedReview));
       }
     } catch (e) {
       setError("An unexpected error occurred during analysis.");

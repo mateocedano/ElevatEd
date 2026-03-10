@@ -36,10 +36,10 @@ export default function LoginForm({ onToggleMode }: LoginFormProps) {
 
     // Bypass authentication for demo access (development only)
     const mockUser = {
-      id: 'demo-user-id',
-      email: 'demo@elevated.app',
+      id: 'student-1',
+      email: 'jane.doe@university.edu',
       user_metadata: {
-        full_name: 'Demo User'
+        full_name: 'Jane Doe'
       }
     } as any;
 

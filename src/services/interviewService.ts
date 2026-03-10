@@ -148,6 +148,33 @@ class InterviewService {
       return `I encountered an error: ${errorMessage}. Please try again.`;
     }
   }
+
+  async summarizeInterview(messages: Message[]): Promise<string> {
+    if (!this.anthropic) {
+      return "Service not initialized. Please check your API key.";
+    }
+    
+    const conversation = messages.filter(m => m.role === 'user' || m.role === 'assistant')
+                                 .map(m => `${m.role.toUpperCase()}: ${m.content}`).join('\n\n');
+    
+    try {
+      const response = await this.anthropic.messages.create({
+        model: "claude-3-haiku-20240307",
+        max_tokens: 300,
+        system: "You are an expert career advisor. Please provide a brief, actionable summary of the following interview transcript. Highlight the candidate's core strengths and one key area for improvement based on their responses. Keep it to 3-4 sentences and do NOT mention numeric scores.",
+        messages: [{ role: 'user', content: `Please summarize this interview:\n\n${conversation}` }]
+      });
+
+      const contentBlock = response.content[0];
+      if (contentBlock.type === 'text') {
+        return contentBlock.text;
+      }
+      return "Unable to generate summary.";
+    } catch (e) {
+      console.error("Error summarizing interview:", e);
+      return "Error generating interview summary.";
+    }
+  }
 }
 
 export const interviewService = new InterviewService();

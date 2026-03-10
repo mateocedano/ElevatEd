@@ -123,6 +123,24 @@ const mockStudentData = {
   ]
 };
 
+// Merge local storage data into Jane Doe for the demo
+try {
+  const savedInterviews = JSON.parse(localStorage.getItem('demo_interviews') || '[]');
+  const savedResumeReview = JSON.parse(localStorage.getItem('demo_resume_review') || 'null');
+  
+  if (mockStudentData.id === 'student-1') {
+    if (savedInterviews.length > 0) {
+      mockStudentData.interviews = [...savedInterviews, ...mockStudentData.interviews];
+    }
+    if (savedResumeReview) {
+      mockStudentData.resumeFeedback = savedResumeReview;
+      mockStudentData.resumeScore = savedResumeReview.score;
+    }
+  }
+} catch (e) {
+  console.error("Error merging demo data:", e);
+}
+
 export default function StudentProfile({ studentId, onBackToAdvisor }: StudentProfileProps) {
   const [activeTab, setActiveTab] = useState('courses');
   const [showAddNote, setShowAddNote] = useState(false);

@@ -198,6 +198,24 @@ const mockStudents = [
   }
 ];
 
+// Merge local storage data into Jane Doe for the demo
+try {
+  const savedInterviews = JSON.parse(localStorage.getItem('demo_interviews') || '[]');
+  const savedResumeReview = JSON.parse(localStorage.getItem('demo_resume_review') || 'null');
+  
+  const janeDoe = mockStudents.find(s => s.id === 'student-1');
+  if (janeDoe) {
+    if (savedInterviews.length > 0) {
+      janeDoe.interviews = [...savedInterviews, ...janeDoe.interviews];
+    }
+    if (savedResumeReview) {
+      janeDoe.resumeScore = savedResumeReview.score;
+    }
+  }
+} catch (e) {
+  console.error("Error merging demo data:", e);
+}
+
 const mockAlerts = [
   { id: 1, message: "Sarah Wilson hasn't logged in in 10 days", severity: 'high', student: 'Sarah Wilson' },
   { id: 2, message: "David Park missed 2 meetings this week", severity: 'high', student: 'David Park' },
@@ -290,7 +308,7 @@ interface AdvisorDashboardProps {
 }
 
 export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile }: AdvisorDashboardProps) {
-  const { signOut } = useAuth();
+  const { user, signOut } = useAuth();
   const [chartType, setChartType] = useState('Weekly Logins');
   const [cohortFilter, setCohortFilter] = useState('All Students');
   const [searchQuery, setSearchQuery] = useState('');
@@ -344,7 +362,7 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
   };
 
   const getChartData = () => {
-    return allTimeData[chartType]?.[timeRange] || allTimeData['Weekly Logins']['Last 30 Days'];
+    return (allTimeData as any)[chartType]?.[timeRange] || allTimeData['Weekly Logins']['Last 30 Days'];
   };
 
   const getYAxisLabel = () => {
@@ -446,12 +464,29 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
               )}
             </div>
 
-            {/* Sign Out Button */}
-            <button
-              onClick={handleSignOut}
-              className="text-sm text-[#6B7280] hover:text-[#1B3D2F] underline"
-            >
-              Sign Out
+            {/* User Profile & Sign Out */}
+            <div className="flex items-center space-x-3 ml-4 border-l border-gray-200 pl-4">
+              <span className="text-sm text-[#6B7280]">
+                Welcome, {user?.user_metadata?.full_name || 'Advisor'}
+              </span>
+              <button
+                onClick={handleSignOut}
+                className="text-sm text-[#6B7280] hover:text-[#1B3D2F] underline"
+              >
+                Sign Out
+              </button>
+            </div>
+            
+            <button className="p-2 hover:bg-gray-100 rounded-full transition-colors ml-2">
+              <Bell className="w-5 h-5 text-[#6B7280]" />
+            </button>
+            
+            <button className="w-10 h-10 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center hover:opacity-90 transition-opacity ml-2">
+              <img
+                src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop"
+                alt="Profile"
+                className="w-full h-full rounded-full object-cover"
+              />
             </button>
           </div>
         </div>
@@ -592,7 +627,7 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
                 
                 {/* Y-axis labels */}
                 {[0, 1, 2, 3, 4, 5, 6].map((index) => {
-                  const maxValue = Math.max(...getChartData().map(d => d.value));
+                  const maxValue = Math.max(...getChartData().map((d: any) => d.value));
                   const yValue = (maxValue / 6) * (6 - index);
                   return (
                     <text
@@ -610,8 +645,8 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
                 {/* Data visualization */}
                 {(() => {
                   const data = getChartData();
-                  const maxValue = Math.max(...data.map(d => d.value));
-                  const points = data.map((point, index) => {
+                  const maxValue = Math.max(...data.map((d: any) => d.value));
+                  const points = data.map((point: any, index: number) => {
                     const x = 100 + (index * (400 / (data.length - 1)));
                     const y = 310 - ((point.value / maxValue) * 250);
                     return `${x},${y}`;
@@ -636,7 +671,7 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
                       />
                       
                       {/* Data points with hover effect */}
-                      {data.map((point, index) => {
+                      {data.map((point: any, index: number) => {
                         const x = 100 + (index * (400 / (data.length - 1)));
                         const y = 310 - ((point.value / maxValue) * 250);
                         return (
@@ -658,7 +693,7 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
                 })()}
                 
                 {/* X-axis labels */}
-                {getChartData().map((point, index) => (
+                {getChartData().map((point: any, index: number) => (
                   <text
                     key={index}
                     x={100 + (index * (400 / (getChartData().length - 1)))}
