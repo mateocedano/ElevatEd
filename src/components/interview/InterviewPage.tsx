@@ -266,8 +266,8 @@ export default function InterviewPage({ onBack }: InterviewPageProps) {
                 Microphone access required
               </p>
             </div>
+          ) : sessionEnded ? (
             <div className="w-full flex flex-col h-full bg-white rounded-2xl shadow-lg p-8 relative overflow-hidden">
-              {sessionEnded ? (
                 <div className="flex flex-col items-center justify-center py-12 px-4 z-10 animate-in fade-in zoom-in-95 duration-500">
                   <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mb-6">
                     <CheckCircle className="w-10 h-10 text-emerald-600" />
@@ -300,9 +300,10 @@ export default function InterviewPage({ onBack }: InterviewPageProps) {
                     </div>
                   )}
                 </div>
-              ) : (
-                <div className="flex flex-col h-full z-10">
-                  {/* Header / Status */}
+            </div>
+          ) : (
+            <div className="w-full flex flex-col h-full">
+              {/* Header / Status */}
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
                   <div className={`w-3 h-3 rounded-full ${isListening ? 'bg-red-500 animate-pulse' : 'bg-gray-300'}`} />
@@ -375,7 +376,6 @@ export default function InterviewPage({ onBack }: InterviewPageProps) {
                   <div className={`absolute inset-0 rounded-full border-2 border-white/20 scale-110 ${isListening ? 'animate-ping opacity-20' : 'opacity-0'}`} />
                   {isListening ? <Square className="w-8 h-8 fill-current" /> : <Mic className="w-8 h-8" />}
                 </button>
-
                 <button
                   onClick={handleEndSession}
                   className="absolute right-0 top-1/2 -translate-y-1/2 px-6 py-3 bg-red-50 text-red-600 font-medium rounded-xl hover:bg-red-100 transition-colors flex items-center border border-red-100"
