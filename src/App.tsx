@@ -12,7 +12,7 @@ import Sidebar from './components/Sidebar';
 import QuickActions from './components/QuickActions';
 import CourseProgress from './components/CourseProgress';
 import ProgressChart from './components/ProgressChart';
-import UpcomingLesson from './components/UpcomingLesson';
+import MonthlyChallenges from './components/MonthlyChallenges';
 import RightSidebar from './components/RightSidebar';
 import SearchBar from './components/SearchBar';
 import InterviewPage from './components/interview/InterviewPage';
@@ -193,7 +193,7 @@ function Dashboard() {
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <ProgressChart />
-              <UpcomingLesson />
+              <MonthlyChallenges />
             </div>
           </div>
 

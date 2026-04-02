@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, Clock, GraduationCap } from 'lucide-react';
+import { Calendar, Clock } from 'lucide-react';
 
 const upcomingMeetings = [
   {
@@ -22,23 +22,6 @@ const upcomingMeetings = [
   }
 ];
 
-const challenges = [
-  {
-    title: 'Apply to 3 jobs',
-    progress: { current: 1, total: 3 },
-    icon: GraduationCap
-  },
-  {
-    title: 'Reach out to 2 employers',
-    progress: { current: 1, total: 2 },
-    icon: GraduationCap
-  },
-  {
-    title: 'Sign up for 1 career fair',
-    progress: { current: 0, total: 1 },
-    icon: GraduationCap
-  }
-];
 
 export default function RightSidebar() {
   const today = new Date();
@@ -103,46 +86,6 @@ export default function RightSidebar() {
         </div>
       </div>
 
-      {/* Monthly Challenges */}
-      <div className="bg-white rounded-2xl shadow-lg p-6">
-        <h3 className="text-lg font-semibold text-[#1B3D2F] mb-4">Monthly Challenges</h3>
-        <div className="space-y-4">
-          {challenges.map((challenge, index) => {
-            const Icon = challenge.icon;
-            const progressPercentage = (challenge.progress.current / challenge.progress.total) * 100;
-            return (
-              <div key={index} className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-3">
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                      challenge.progress.current === challenge.progress.total 
-                        ? 'bg-[#1B3D2F]' 
-                        : 'bg-gray-300'
-                    }`}>
-                      <Icon className="w-4 h-4 text-white" />
-                    </div>
-                    <span className="text-sm font-medium text-[#1B3D2F]">{challenge.title}</span>
-                  </div>
-                  <span className="text-sm font-bold text-[#F6C28B]">
-                    {challenge.progress.current}/{challenge.progress.total}
-                  </span>
-                </div>
-                
-                {/* Progress Bar */}
-                <div className="w-full bg-[#DDE5E1] rounded-full h-2">
-                  <div 
-                    className="h-2 rounded-full transition-all duration-300 ease-out"
-                    style={{ 
-                      width: `${progressPercentage}%`,
-                      background: 'linear-gradient(to right, #1B3D2F, #A7D7C5)'
-                    }}
-                  ></div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
     </div>
   );
 }
