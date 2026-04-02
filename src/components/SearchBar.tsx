@@ -10,7 +10,7 @@ export default function SearchBar() {
       <input
         type="text"
         placeholder="What are you looking for?"
-        className="w-full pl-10 pr-6 py-3 border border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-[#1B3D2F] focus:border-transparent bg-white shadow-sm"
+        className="w-full pl-10 pr-6 py-3 border border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-[#3E5B45] focus:border-transparent bg-white shadow-sm"
       />
     </div>
   );

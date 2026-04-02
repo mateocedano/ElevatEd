@@ -170,7 +170,7 @@ END:VCALENDAR`;
               AC
             </div>
             <div>
-              <h2 className="text-xl font-semibold text-[#1B3D2F]">Appleseed Coaching</h2>
+              <h2 className="text-xl font-semibold text-[#3E5B45]">Appleseed Coaching</h2>
               <p className="text-sm text-[#6B7280]">Career Meeting · 30 min · Video Call</p>
             </div>
           </div>
@@ -190,14 +190,14 @@ END:VCALENDAR`;
               {/* Left Column - Info */}
               <div className="space-y-6">
                 <div>
-                  <h3 className="font-semibold text-[#1B3D2F] mb-2">About this meeting</h3>
+                  <h3 className="font-semibold text-[#3E5B45] mb-2">About this meeting</h3>
                   <p className="text-sm text-[#6B7280] leading-relaxed">
                     Join Appleseed Coaching for a personalized career consultation. Discuss your goals, explore opportunities, and develop an action plan for your professional growth.
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="font-semibold text-[#1B3D2F] mb-2">Location</h3>
+                  <h3 className="font-semibold text-[#3E5B45] mb-2">Location</h3>
                   <p className="text-sm text-[#6B7280]">Video Call</p>
                 </div>
 
@@ -210,13 +210,13 @@ END:VCALENDAR`;
               <div className="lg:col-span-2 space-y-6">
                 {/* Timezone Selector */}
                 <div>
-                  <label className="block text-sm font-medium text-[#1B3D2F] mb-2">
+                  <label className="block text-sm font-medium text-[#3E5B45] mb-2">
                     Timezone
                   </label>
                   <select
                     value={timezone}
                     onChange={(e) => setTimezone(e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-200 rounded-lg text-sm text-[#1B3D2F] focus:outline-none focus:ring-2 focus:ring-[#1B3D2F]"
+                    className="w-full px-4 py-2 border border-gray-200 rounded-lg text-sm text-[#3E5B45] focus:outline-none focus:ring-2 focus:ring-[#3E5B45]"
                   >
                     {timeZones.map((tz) => (
                       <option key={tz} value={tz}>
@@ -236,7 +236,7 @@ END:VCALENDAR`;
                 {/* Time Slots */}
                 {selectedDate && (
                   <div>
-                    <label className="block text-sm font-medium text-[#1B3D2F] mb-3">
+                    <label className="block text-sm font-medium text-[#3E5B45] mb-3">
                       Select a time
                     </label>
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
@@ -251,7 +251,7 @@ END:VCALENDAR`;
                             disabled={!slot.available}
                             className={`py-2 px-3 text-sm font-medium rounded-lg transition-all ${
                               slot.available
-                                ? 'bg-gray-50 border border-gray-200 text-[#1B3D2F] hover:border-[#1B3D2F] cursor-pointer'
+                                ? 'bg-gray-50 border border-gray-200 text-[#3E5B45] hover:border-[#3E5B45] cursor-pointer'
                                 : 'bg-gray-50 border border-gray-100 text-gray-300 cursor-not-allowed'
                             }`}
                           >
@@ -270,11 +270,11 @@ END:VCALENDAR`;
               {/* Left Column - Summary */}
               <div className="space-y-4">
                 <div className="bg-gray-50 rounded-lg p-4">
-                  <h3 className="text-sm font-semibold text-[#1B3D2F] mb-3">Your selection</h3>
+                  <h3 className="text-sm font-semibold text-[#3E5B45] mb-3">Your selection</h3>
                   <div className="space-y-2 text-sm">
                     <div>
                       <p className="text-[#6B7280]">Date</p>
-                      <p className="font-medium text-[#1B3D2F]">
+                      <p className="font-medium text-[#3E5B45]">
                         {new Date(selectedSlot!.date).toLocaleDateString('default', {
                           weekday: 'long',
                           year: 'numeric',
@@ -285,18 +285,18 @@ END:VCALENDAR`;
                     </div>
                     <div>
                       <p className="text-[#6B7280]">Time</p>
-                      <p className="font-medium text-[#1B3D2F]">{selectedSlot!.time}</p>
+                      <p className="font-medium text-[#3E5B45]">{selectedSlot!.time}</p>
                     </div>
                     <div>
                       <p className="text-[#6B7280]">Timezone</p>
-                      <p className="font-medium text-[#1B3D2F]">{timezone}</p>
+                      <p className="font-medium text-[#3E5B45]">{timezone}</p>
                     </div>
                   </div>
                 </div>
 
                 <button
                   onClick={() => setStep('calendar')}
-                  className="w-full py-2 text-sm text-[#1B3D2F] hover:bg-gray-50 rounded-lg transition-colors border border-gray-200"
+                  className="w-full py-2 text-sm text-[#3E5B45] hover:bg-gray-50 rounded-lg transition-colors border border-gray-200"
                 >
                   Change time
                 </button>
@@ -305,52 +305,52 @@ END:VCALENDAR`;
               {/* Right Column - Form */}
               <div className="lg:col-span-2 space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-[#1B3D2F] mb-2">
+                  <label className="block text-sm font-medium text-[#3E5B45] mb-2">
                     Name *
                   </label>
                   <input
                     type="text"
                     value={bookingDetails.name}
                     onChange={(e) => handleBookingDetailsChange('name', e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-200 rounded-lg text-sm text-[#1B3D2F] placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#1B3D2F]"
+                    className="w-full px-4 py-2 border border-gray-200 rounded-lg text-sm text-[#3E5B45] placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#3E5B45]"
                     placeholder="John Appleseed"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-[#1B3D2F] mb-2">
+                  <label className="block text-sm font-medium text-[#3E5B45] mb-2">
                     Email *
                   </label>
                   <input
                     type="email"
                     value={bookingDetails.email}
                     onChange={(e) => handleBookingDetailsChange('email', e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-200 rounded-lg text-sm text-[#1B3D2F] placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#1B3D2F]"
+                    className="w-full px-4 py-2 border border-gray-200 rounded-lg text-sm text-[#3E5B45] placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#3E5B45]"
                     placeholder="john@example.com"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-[#1B3D2F] mb-2">
+                  <label className="block text-sm font-medium text-[#3E5B45] mb-2">
                     Resume URL
                   </label>
                   <input
                     type="url"
                     value={bookingDetails.resumeUrl}
                     onChange={(e) => handleBookingDetailsChange('resumeUrl', e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-200 rounded-lg text-sm text-[#1B3D2F] placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#1B3D2F]"
+                    className="w-full px-4 py-2 border border-gray-200 rounded-lg text-sm text-[#3E5B45] placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#3E5B45]"
                     placeholder="https://example.com/resume.pdf"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-[#1B3D2F] mb-2">
+                  <label className="block text-sm font-medium text-[#3E5B45] mb-2">
                     Notes
                   </label>
                   <textarea
                     value={bookingDetails.notes}
                     onChange={(e) => handleBookingDetailsChange('notes', e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-200 rounded-lg text-sm text-[#1B3D2F] placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#1B3D2F] resize-none"
+                    className="w-full px-4 py-2 border border-gray-200 rounded-lg text-sm text-[#3E5B45] placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#3E5B45] resize-none"
                     placeholder="Tell us what you'd like to discuss..."
                     rows={4}
                   />
@@ -359,7 +359,7 @@ END:VCALENDAR`;
                 <button
                   onClick={handleConfirmBooking}
                   disabled={!bookingDetails.name || !bookingDetails.email}
-                  className="w-full py-3 bg-[#1B3D2F] text-white font-medium rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+                  className="w-full py-3 bg-[#3E5B45] text-white font-medium rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
                 >
                   <span>Confirm booking</span>
                   <ArrowRight className="w-4 h-4" />
@@ -370,21 +370,21 @@ END:VCALENDAR`;
 
           {step === 'success' && (
             <div className="p-8 flex flex-col items-center text-center space-y-6">
-              <div className="w-16 h-16 bg-[#A7D7C5] rounded-full flex items-center justify-center">
-                <svg className="w-8 h-8 text-[#1B3D2F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-16 h-16 bg-[#AEBFAB] rounded-full flex items-center justify-center">
+                <svg className="w-8 h-8 text-[#3E5B45]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
 
               <div>
-                <h3 className="text-2xl font-semibold text-[#1B3D2F] mb-2">Booking confirmed</h3>
+                <h3 className="text-2xl font-semibold text-[#3E5B45] mb-2">Booking confirmed</h3>
                 <p className="text-[#6B7280]">A confirmation email has been sent to {bookingDetails.email}</p>
               </div>
 
               <div className="bg-gray-50 rounded-lg p-4 w-full text-left space-y-2">
                 <div>
                   <p className="text-xs text-[#6B7280] uppercase tracking-wide">Career Meeting</p>
-                  <p className="font-medium text-[#1B3D2F]">
+                  <p className="font-medium text-[#3E5B45]">
                     {new Date(selectedSlot!.date).toLocaleDateString('default', {
                       weekday: 'long',
                       year: 'numeric',
@@ -398,13 +398,13 @@ END:VCALENDAR`;
               </div>
 
               <div className="w-full space-y-2">
-                <p className="text-sm font-medium text-[#1B3D2F]">Add to calendar</p>
+                <p className="text-sm font-medium text-[#3E5B45]">Add to calendar</p>
                 <div className="grid grid-cols-2 gap-2">
                   <a
                     href={generateGoogleCalendarLink()}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center space-x-2 py-2 px-3 border border-gray-200 rounded-lg text-sm font-medium text-[#1B3D2F] hover:bg-gray-50 transition-colors"
+                    className="flex items-center justify-center space-x-2 py-2 px-3 border border-gray-200 rounded-lg text-sm font-medium text-[#3E5B45] hover:bg-gray-50 transition-colors"
                   >
                     <span>Google Calendar</span>
                     <ExternalLink className="w-4 h-4" />
@@ -413,7 +413,7 @@ END:VCALENDAR`;
                     href={generateOutlookLink()}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center space-x-2 py-2 px-3 border border-gray-200 rounded-lg text-sm font-medium text-[#1B3D2F] hover:bg-gray-50 transition-colors"
+                    className="flex items-center justify-center space-x-2 py-2 px-3 border border-gray-200 rounded-lg text-sm font-medium text-[#3E5B45] hover:bg-gray-50 transition-colors"
                   >
                     <span>Outlook</span>
                     <ExternalLink className="w-4 h-4" />
@@ -421,7 +421,7 @@ END:VCALENDAR`;
                 </div>
                 <button
                   onClick={downloadICS}
-                  className="w-full flex items-center justify-center space-x-2 py-2 px-3 border border-gray-200 rounded-lg text-sm font-medium text-[#1B3D2F] hover:bg-gray-50 transition-colors"
+                  className="w-full flex items-center justify-center space-x-2 py-2 px-3 border border-gray-200 rounded-lg text-sm font-medium text-[#3E5B45] hover:bg-gray-50 transition-colors"
                 >
                   <Download className="w-4 h-4" />
                   <span>Download .ics file</span>
@@ -430,7 +430,7 @@ END:VCALENDAR`;
 
               <button
                 onClick={onClose}
-                className="w-full py-3 bg-[#1B3D2F] text-white font-medium rounded-lg hover:opacity-90 transition-opacity"
+                className="w-full py-3 bg-[#3E5B45] text-white font-medium rounded-lg hover:opacity-90 transition-opacity"
               >
                 Return to Dashboard
               </button>

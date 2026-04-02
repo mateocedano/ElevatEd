@@ -392,11 +392,11 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
     window.location.href = '/advisor-login';
   };
   return (
-    <div className="min-h-screen bg-[#EAF4F1] p-6">
+    <div className="min-h-screen bg-[#F4F3E8] p-6">
       <div className="max-w-full">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
-          <h1 className="text-4xl font-bold text-[#1B3D2F]">Advisor Dashboard</h1>
+          <h1 className="text-4xl font-bold text-[#3E5B45]">Advisor Dashboard</h1>
 
           {/* Top Right Controls */}
           <div className="flex items-center space-x-3">
@@ -409,7 +409,7 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
                   placeholder="Search students..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-64 pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1B3D2F] focus:border-transparent bg-white"
+                  className="w-64 pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3E5B45] focus:border-transparent bg-white"
                 />
               </div>
               
@@ -426,7 +426,7 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
                         <User className="w-4 h-4 text-white" />
                       </div>
                       <div>
-                        <p className="font-medium text-[#1B3D2F]">{student.name}</p>
+                        <p className="font-medium text-[#3E5B45]">{student.name}</p>
                         <p className="text-sm text-[#6B7280]">{student.xp.toLocaleString()} XP</p>
                       </div>
                     </button>
@@ -442,7 +442,7 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
                 className="flex items-center space-x-2 bg-white border border-gray-200 rounded-lg px-4 py-2 hover:bg-gray-50 transition-colors"
               >
                 <Download className="w-4 h-4 text-[#6B7280]" />
-                <span className="text-sm font-medium text-[#1B3D2F]">Export</span>
+                <span className="text-sm font-medium text-[#3E5B45]">Export</span>
                 <ChevronDown className="w-4 h-4 text-[#6B7280]" />
               </button>
 
@@ -471,7 +471,7 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
               </span>
               <button
                 onClick={handleSignOut}
-                className="text-sm text-[#6B7280] hover:text-[#1B3D2F] underline"
+                className="text-sm text-[#6B7280] hover:text-[#3E5B45] underline"
               >
                 Sign Out
               </button>
@@ -499,7 +499,7 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
               <select 
                 value={cohortFilter}
                 onChange={(e) => setCohortFilter(e.target.value)}
-                className="appearance-none bg-white border border-gray-200 rounded-lg px-4 py-2 pr-8 text-sm focus:outline-none focus:ring-2 focus:ring-[#1B3D2F]"
+                className="appearance-none bg-white border border-gray-200 rounded-lg px-4 py-2 pr-8 text-sm focus:outline-none focus:ring-2 focus:ring-[#3E5B45]"
               >
                 <option>All Students</option>
                 <option>Class of 2025</option>
@@ -517,11 +517,11 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <button className="bg-white rounded-2xl shadow-lg p-6 text-left hover:shadow-xl transition-all duration-200 hover:scale-105">
               <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-[#1B3D2F] rounded-full flex items-center justify-center">
+                <div className="w-12 h-12 bg-[#3E5B45] rounded-full flex items-center justify-center">
                   <Edit3 className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-[#1B3D2F]">Add Note</h3>
+                  <h3 className="text-lg font-bold text-[#3E5B45]">Add Note</h3>
                   <p className="text-sm text-[#6B7280]">Record student observations</p>
                 </div>
               </div>
@@ -529,11 +529,11 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
 
             <button className="bg-white rounded-2xl shadow-lg p-6 text-left hover:shadow-xl transition-all duration-200 hover:scale-105">
               <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-[#A7D7C5] rounded-full flex items-center justify-center">
-                  <MessageSquare className="w-6 h-6 text-[#1B3D2F]" />
+                <div className="w-12 h-12 bg-[#AEBFAB] rounded-full flex items-center justify-center">
+                  <MessageSquare className="w-6 h-6 text-[#3E5B45]" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-[#1B3D2F]">Send Message</h3>
+                  <h3 className="text-lg font-bold text-[#3E5B45]">Send Message</h3>
                   <p className="text-sm text-[#6B7280]">Contact students directly</p>
                 </div>
               </div>
@@ -542,10 +542,10 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
             <button className="bg-white rounded-2xl shadow-lg p-6 text-left hover:shadow-xl transition-all duration-200 hover:scale-105">
               <div className="flex items-center space-x-4">
                 <div className="w-12 h-12 bg-[#F6C28B] rounded-full flex items-center justify-center">
-                  <Eye className="w-6 h-6 text-[#1B3D2F]" />
+                  <Eye className="w-6 h-6 text-[#3E5B45]" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-[#1B3D2F]">View Student Profile</h3>
+                  <h3 className="text-lg font-bold text-[#3E5B45]">View Student Profile</h3>
                   <p className="text-sm text-[#6B7280]">Access detailed profiles</p>
                 </div>
               </div>
@@ -558,7 +558,7 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
           {/* Left Column - Weekly Logins Chart */}
           <div className="lg:col-span-2 bg-white rounded-2xl shadow-lg p-6">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-xl font-bold text-[#1B3D2F]">Weekly Login Trends</h3>
+              <h3 className="text-xl font-bold text-[#3E5B45]">Weekly Login Trends</h3>
               
               <div className="flex items-center space-x-4">
                 {/* DataCamp-style Toggle */}
@@ -569,8 +569,8 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
                       onClick={() => setChartType(option)}
                       className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                         chartType === option
-                          ? 'bg-[#1B3D2F] text-white shadow-sm'
-                          : 'text-[#6B7280] hover:text-[#1B3D2F]'
+                          ? 'bg-[#3E5B45] text-white shadow-sm'
+                          : 'text-[#6B7280] hover:text-[#3E5B45]'
                       }`}
                     >
                       {option}
@@ -583,7 +583,7 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
                   <select 
                     value={timeRange}
                     onChange={(e) => setTimeRange(e.target.value)}
-                    className="appearance-none bg-white border border-gray-200 rounded-lg px-4 py-2 pr-8 text-sm focus:outline-none focus:ring-2 focus:ring-[#1B3D2F] focus:border-transparent"
+                    className="appearance-none bg-white border border-gray-200 rounded-lg px-4 py-2 pr-8 text-sm focus:outline-none focus:ring-2 focus:ring-[#3E5B45] focus:border-transparent"
                   >
                     <option>Last 7 Days</option>
                     <option>Last 30 Days</option>
@@ -600,8 +600,8 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
               <svg className="w-full h-full" viewBox="0 0 600 360" preserveAspectRatio="xMidYMid meet">
                 <defs>
                   <linearGradient id="chartGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#1B3D2F" stopOpacity="0.3" />
-                    <stop offset="100%" stopColor="#1B3D2F" stopOpacity="0.1" />
+                    <stop offset="0%" stopColor="#3E5B45" stopOpacity="0.3" />
+                    <stop offset="100%" stopColor="#3E5B45" stopOpacity="0.1" />
                   </linearGradient>
                 </defs>
                 
@@ -664,7 +664,7 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
                       <polyline
                         points={points}
                         fill="none"
-                        stroke="#1B3D2F"
+                        stroke="#3E5B45"
                         strokeWidth="3"
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -680,7 +680,7 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
                               cx={x}
                               cy={y}
                               r="5"
-                              fill="#1B3D2F"
+                              fill="#3E5B45"
                               className="cursor-pointer"
                             />
                             {/* Tooltip on hover */}
@@ -730,7 +730,7 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
               {/* Chart Legend */}
              <div className="absolute top-4 right-4 bg-white rounded-lg shadow-sm p-2 border border-gray-200">
                 <div className="flex items-center space-x-2">
-                  <div className="w-3 h-3 bg-[#1B3D2F] rounded-full"></div>
+                  <div className="w-3 h-3 bg-[#3E5B45] rounded-full"></div>
                  <span
                     className="text-xs text-[#6B7280] font-medium"
                   >
@@ -745,7 +745,7 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
           <div className="space-y-6">
             {/* XP Leaderboard */}
             <div className="bg-white rounded-2xl shadow-lg p-6">
-              <h3 className="text-xl font-bold text-[#1B3D2F] mb-6">XP Leaderboard</h3>
+              <h3 className="text-xl font-bold text-[#3E5B45] mb-6">XP Leaderboard</h3>
               <div className="space-y-4">
                 {topStudents.map((student, index) => (
                   <button
@@ -767,7 +767,7 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
                       </div>
                     </div>
                     <div className="flex-1 text-left">
-                      <p className="font-medium text-[#1B3D2F]">{student.name}</p>
+                      <p className="font-medium text-[#3E5B45]">{student.name}</p>
                       <p className="text-sm text-[#6B7280]">{student.xp.toLocaleString()} XP</p>
                     </div>
                   </button>
@@ -777,13 +777,13 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
 
             {/* Students at Risk Chart */}
             <div className="bg-white rounded-2xl shadow-lg p-6">
-              <h3 className="text-xl font-bold text-[#1B3D2F] mb-6">Students at Risk</h3>
+              <h3 className="text-xl font-bold text-[#3E5B45] mb-6">Students at Risk</h3>
               
               <div className="space-y-4">
                 <div className="cursor-pointer hover:bg-gray-50 p-3 rounded-lg transition-colors">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="font-medium text-[#1B3D2F]">Low Risk</span>
-                    <span className="text-sm font-bold text-[#1B3D2F]">{riskAssessment.onTrack}</span>
+                    <span className="font-medium text-[#3E5B45]">Low Risk</span>
+                    <span className="text-sm font-bold text-[#3E5B45]">{riskAssessment.onTrack}</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-3">
                     <div className="bg-green-500 h-3 rounded-full" style={{ width: `${(riskAssessment.onTrack / filteredStudents.length) * 100}%` }}></div>
@@ -792,8 +792,8 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
 
                 <div className="cursor-pointer hover:bg-gray-50 p-3 rounded-lg transition-colors">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="font-medium text-[#1B3D2F]">Medium Risk</span>
-                    <span className="text-sm font-bold text-[#1B3D2F]">{riskAssessment.inconsistent}</span>
+                    <span className="font-medium text-[#3E5B45]">Medium Risk</span>
+                    <span className="text-sm font-bold text-[#3E5B45]">{riskAssessment.inconsistent}</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-3">
                     <div className="bg-yellow-500 h-3 rounded-full" style={{ width: `${(riskAssessment.inconsistent / filteredStudents.length) * 100}%` }}></div>
@@ -802,8 +802,8 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
 
                 <div className="cursor-pointer hover:bg-gray-50 p-3 rounded-lg transition-colors">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="font-medium text-[#1B3D2F]">High Risk</span>
-                    <span className="text-sm font-bold text-[#1B3D2F]">{riskAssessment.atRisk}</span>
+                    <span className="font-medium text-[#3E5B45]">High Risk</span>
+                    <span className="text-sm font-bold text-[#3E5B45]">{riskAssessment.atRisk}</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-3">
                     <div className="bg-red-500 h-3 rounded-full" style={{ width: `${(riskAssessment.atRisk / filteredStudents.length) * 100}%` }}></div>
@@ -820,7 +820,7 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl shadow-xl max-w-md w-full p-6">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-xl font-bold text-[#1B3D2F]">Quick Profile</h3>
+              <h3 className="text-xl font-bold text-[#3E5B45]">Quick Profile</h3>
               <button
                 onClick={() => setShowQuickProfile(false)}
                 className="text-gray-400 hover:text-gray-600"
@@ -833,14 +833,14 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
               <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <User className="w-8 h-8 text-white" />
               </div>
-              <h4 className="text-lg font-bold text-[#1B3D2F]">{selectedStudent.name}</h4>
+              <h4 className="text-lg font-bold text-[#3E5B45]">{selectedStudent.name}</h4>
               <p className="text-sm text-[#6B7280]">{selectedStudent.email}</p>
             </div>
             
             <div className="space-y-4 mb-6">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium text-[#6B7280]">XP Total</span>
-                <span className="font-bold text-[#1B3D2F]">{selectedStudent.xp.toLocaleString()}</span>
+                <span className="font-bold text-[#3E5B45]">{selectedStudent.xp.toLocaleString()}</span>
               </div>
               
               <div className="flex items-center justify-between">
@@ -857,7 +857,7 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
               
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium text-[#6B7280]">Last Login</span>
-                <span className="text-sm text-[#1B3D2F]">{selectedStudent.lastLogin}</span>
+                <span className="text-sm text-[#3E5B45]">{selectedStudent.lastLogin}</span>
               </div>
             </div>
             
@@ -867,11 +867,11 @@ export default function AdvisorDashboard({ onBackToStudent, onViewStudentProfile
                   setShowQuickProfile(false);
                   onViewStudentProfile(selectedStudent.id);
                 }}
-                className="flex-1 bg-[#1B3D2F] text-white py-2 px-4 rounded-lg font-medium hover:bg-opacity-90 transition-colors"
+                className="flex-1 bg-[#3E5B45] text-white py-2 px-4 rounded-lg font-medium hover:bg-opacity-90 transition-colors"
               >
                 View Full Profile
               </button>
-              <button className="flex-1 bg-gray-100 text-[#1B3D2F] py-2 px-4 rounded-lg font-medium hover:bg-gray-200 transition-colors">
+              <button className="flex-1 bg-gray-100 text-[#3E5B45] py-2 px-4 rounded-lg font-medium hover:bg-gray-200 transition-colors">
                 Add Note
               </button>
             </div>

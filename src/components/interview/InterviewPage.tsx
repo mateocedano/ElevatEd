@@ -136,10 +136,10 @@ export default function InterviewPage({ onBack }: InterviewPageProps) {
 
   if (!hasRecognitionSupport) {
     return (
-      <div className="flex flex-col items-center justify-center h-screen bg-[#EAF4F1] text-[#1B3D2F]">
+      <div className="flex flex-col items-center justify-center h-screen bg-[#F4F3E8] text-[#3E5B45]">
         <h2 className="text-2xl font-bold mb-4">Browser Not Supported</h2>
         <p>Your browser does not support speech recognition. Please use Chrome or Edge.</p>
-        <button onClick={onBack} className="mt-6 px-6 py-2 bg-[#1B3D2F] text-white rounded-lg">
+        <button onClick={onBack} className="mt-6 px-6 py-2 bg-[#3E5B45] text-white rounded-lg">
           Go Back
         </button>
       </div>
@@ -147,21 +147,21 @@ export default function InterviewPage({ onBack }: InterviewPageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-[#EAF4F1] flex flex-col">
+    <div className="min-h-screen bg-[#F4F3E8] flex flex-col">
       {/* Header */}
       <div className="bg-white shadow-sm p-4 flex items-center justify-between">
         <button 
           onClick={() => { cancelSpeech(); onBack(); }}
-          className="flex items-center text-[#6B7280] hover:text-[#1B3D2F] transition-colors"
+          className="flex items-center text-[#6B7280] hover:text-[#3E5B45] transition-colors"
         >
           <ArrowLeft className="w-5 h-5 mr-2" />
           Back to Dashboard
         </button>
         <div className="flex items-center gap-2">
-           <h1 className="text-xl font-bold text-[#1B3D2F]">Mock Interview Session</h1>
+           <h1 className="text-xl font-bold text-[#3E5B45]">Mock Interview Session</h1>
            <button 
              onClick={() => setShowPromptEditor(!showPromptEditor)}
-             className="p-1 text-gray-300 hover:text-[#1B3D2F] transition-colors rounded-full hover:bg-gray-100"
+             className="p-1 text-gray-300 hover:text-[#3E5B45] transition-colors rounded-full hover:bg-gray-100"
              title="Tune System Prompt"
            >
              <Settings2 className="w-4 h-4" />
@@ -176,7 +176,7 @@ export default function InterviewPage({ onBack }: InterviewPageProps) {
           <div className="bg-white rounded-2xl w-full max-w-2xl flex flex-col shadow-2xl animate-in fade-in zoom-in duration-200">
             <div className="flex items-center justify-between p-6 border-b border-gray-100">
               <div>
-                <h3 className="text-lg font-bold text-[#1B3D2F]">System Prompt Editor</h3>
+                <h3 className="text-lg font-bold text-[#3E5B45]">System Prompt Editor</h3>
                 <p className="text-sm text-gray-500">Edit the instructions given to the AI interviewer.</p>
               </div>
               <button 
@@ -191,7 +191,7 @@ export default function InterviewPage({ onBack }: InterviewPageProps) {
                <textarea
                  value={customPrompt}
                  onChange={(e) => setCustomPrompt(e.target.value)}
-                 className="w-full h-[300px] p-4 rounded-xl border border-gray-200 font-mono text-sm leading-relaxed focus:border-[#1B3D2F] focus:ring-2 focus:ring-[#1B3D2F]/20 outline-none resize-none"
+                 className="w-full h-[300px] p-4 rounded-xl border border-gray-200 font-mono text-sm leading-relaxed focus:border-[#3E5B45] focus:ring-2 focus:ring-[#3E5B45]/20 outline-none resize-none"
                  placeholder="Enter system prompt..."
                />
             </div>
@@ -199,13 +199,13 @@ export default function InterviewPage({ onBack }: InterviewPageProps) {
             <div className="p-6 border-t border-gray-100 flex justify-end gap-3">
               <button 
                 onClick={() => setCustomPrompt(defaultSystemPrompt)}
-                className="px-4 py-2 text-sm text-gray-600 hover:text-[#1B3D2F] font-medium"
+                className="px-4 py-2 text-sm text-gray-600 hover:text-[#3E5B45] font-medium"
               >
                 Reset to Default
               </button>
               <button 
                 onClick={() => setShowPromptEditor(false)}
-                className="px-6 py-2 bg-[#1B3D2F] text-white rounded-lg font-medium hover:bg-[#152e24] transition-colors"
+                className="px-6 py-2 bg-[#3E5B45] text-white rounded-lg font-medium hover:bg-[#152e24] transition-colors"
               >
                 Save & Close
               </button>
@@ -222,10 +222,10 @@ export default function InterviewPage({ onBack }: InterviewPageProps) {
           {!sessionStarted ? (
             <div className="text-center z-10 w-full max-w-2xl mx-auto py-12">
               <div className="w-24 h-24 bg-gradient-to-br from-blue-50 to-emerald-50 rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-sm border border-blue-100/50 transform rotate-3 transition-transform hover:rotate-0">
-                <Volume2 className="w-12 h-12 text-[#1B3D2F]" />
+                <Volume2 className="w-12 h-12 text-[#3E5B45]" />
               </div>
               
-              <h1 className="text-4xl font-serif text-[#1B3D2F] mb-4 tracking-tight">
+              <h1 className="text-4xl font-serif text-[#3E5B45] mb-4 tracking-tight">
                 Practice Your Interview Skills
               </h1>
               
@@ -244,7 +244,7 @@ export default function InterviewPage({ onBack }: InterviewPageProps) {
               <button 
                 onClick={handleStartSession}
                 disabled={isProcessing}
-                className={`group relative px-8 py-4 bg-[#1B3D2F] text-white rounded-xl font-medium text-lg transition-all transform hover:-translate-y-1 hover:shadow-xl shadow-lg shadow-[#1B3D2F]/20 flex items-center justify-center mx-auto min-w-[200px] overflow-hidden ${
+                className={`group relative px-8 py-4 bg-[#3E5B45] text-white rounded-xl font-medium text-lg transition-all transform hover:-translate-y-1 hover:shadow-xl shadow-lg shadow-[#3E5B45]/20 flex items-center justify-center mx-auto min-w-[200px] overflow-hidden ${
                   isProcessing ? 'opacity-80 cursor-wait' : ''
                 }`}
               >
@@ -272,17 +272,17 @@ export default function InterviewPage({ onBack }: InterviewPageProps) {
                   <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mb-6">
                     <CheckCircle className="w-10 h-10 text-emerald-600" />
                   </div>
-                  <h2 className="text-3xl font-bold text-[#1B3D2F] mb-2 tracking-tight">Interview Complete</h2>
+                  <h2 className="text-3xl font-bold text-[#3E5B45] mb-2 tracking-tight">Interview Complete</h2>
                   <p className="text-gray-500 mb-10">Great job! Here is a summary of your performance.</p>
                   
                   {isProcessing ? (
                     <div className="flex flex-col items-center justify-center p-8 bg-gray-50 rounded-xl w-full max-w-2xl border border-gray-100">
-                      <RefreshCw className="w-8 h-8 text-[#1B3D2F] animate-spin mb-4" />
+                      <RefreshCw className="w-8 h-8 text-[#3E5B45] animate-spin mb-4" />
                       <p className="text-gray-600 font-medium tracking-wide">AI is analyzing your transcript...</p>
                     </div>
                   ) : (
-                    <div className="w-full max-w-2xl bg-[#EAF4F1] border border-emerald-100 p-8 rounded-2xl shadow-sm text-left">
-                      <h4 className="font-bold text-[#1B3D2F] text-lg mb-4 flex items-center">
+                    <div className="w-full max-w-2xl bg-[#F4F3E8] border border-emerald-100 p-8 rounded-2xl shadow-sm text-left">
+                      <h4 className="font-bold text-[#3E5B45] text-lg mb-4 flex items-center">
                         <Sparkles className="w-5 h-5 mr-2 text-emerald-600" />
                         Advisor Summary
                       </h4>
@@ -292,7 +292,7 @@ export default function InterviewPage({ onBack }: InterviewPageProps) {
                       <div className="mt-8 flex justify-center">
                         <button 
                           onClick={onBack}
-                          className="px-8 py-3 bg-[#1B3D2F] text-white rounded-xl font-medium shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all text-sm"
+                          className="px-8 py-3 bg-[#3E5B45] text-white rounded-xl font-medium shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all text-sm"
                         >
                           Return to Dashboard
                         </button>
@@ -370,7 +370,7 @@ export default function InterviewPage({ onBack }: InterviewPageProps) {
                   className={`relative group w-20 h-20 rounded-full flex items-center justify-center transition-all duration-300 ${
                     isListening 
                       ? 'bg-red-500 text-white shadow-xl shadow-red-500/20 hover:scale-105 hover:bg-red-600' 
-                      : 'bg-[#1B3D2F] text-white shadow-xl shadow-[#1B3D2F]/20 hover:scale-105 hover:bg-[#152e24]'
+                      : 'bg-[#3E5B45] text-white shadow-xl shadow-[#3E5B45]/20 hover:scale-105 hover:bg-[#152e24]'
                   }`}
                 >
                   <div className={`absolute inset-0 rounded-full border-2 border-white/20 scale-110 ${isListening ? 'animate-ping opacity-20' : 'opacity-0'}`} />

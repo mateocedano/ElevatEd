@@ -16,13 +16,13 @@ export default function ProgressChart() {
     <div className="bg-white rounded-2xl shadow-lg p-6 h-full flex flex-col">
       <div className="flex items-start justify-between mb-6">
         <div>
-          <h2 className="text-2xl font-bold text-[#1B3D2F]">Progress</h2>
+          <h2 className="text-2xl font-bold text-[#3E5B45]">Progress</h2>
           <div className="flex items-center space-x-2 mt-2">
             <span className="text-[32px] font-semibold">
               <span className="text-[#1A73E8]">24,450</span>
-              <span className="text-[#1B3D2F]"> XP</span>
+              <span className="text-[#3E5B45]"> XP</span>
             </span>
-            <TrendingUp className="w-5 h-5 text-[#1B3D2F]" />
+            <TrendingUp className="w-5 h-5 text-[#3E5B45]" />
           </div>
         </div>
         <div className="flex flex-col items-end space-y-4">
@@ -41,7 +41,7 @@ export default function ProgressChart() {
           {weeklyData.map((day, index) => (
             <div key={index} className="flex flex-col items-center space-y-1">
               <div className={`w-3 h-3 rounded-full mb-1 ${
-                day.active ? 'bg-[#1B3D2F]' : 'bg-gray-300'
+                day.active ? 'bg-[#3E5B45]' : 'bg-gray-300'
               }`}></div>
               <span className="text-sm font-medium text-[#6B7280]">{day.day}</span>
             </div>
@@ -55,8 +55,8 @@ export default function ProgressChart() {
         <svg className="w-full h-full" viewBox="0 0 280 120">
           <defs>
             <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#1B3D2F" />
-              <stop offset="100%" stopColor="#A7D7C5" />
+              <stop offset="0%" stopColor="#3E5B45" />
+              <stop offset="100%" stopColor="#AEBFAB" />
             </linearGradient>
           </defs>
           
@@ -71,9 +71,9 @@ export default function ProgressChart() {
           />
           
           {/* Data Points */}
-          <circle cx="30" cy="90" r="4" fill="#1B3D2F" />
-          <circle cx="130" cy="70" r="4" fill="#1B3D2F" />
-          <circle cx="230" cy="40" r="4" fill="#A7D7C5" />
+          <circle cx="30" cy="90" r="4" fill="#3E5B45" />
+          <circle cx="130" cy="70" r="4" fill="#3E5B45" />
+          <circle cx="230" cy="40" r="4" fill="#AEBFAB" />
           
           {/* XP Labels */}
           <text x="30" y="110" textAnchor="middle" className="text-xs font-normal fill-[#6B7280]">4,725 XP</text>

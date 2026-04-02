@@ -64,7 +64,7 @@ export default function CalendarDatePicker({
           <ChevronLeft className="w-5 h-5 text-[#6B7280]" />
         </button>
 
-        <h3 className="text-lg font-semibold text-[#1B3D2F]">
+        <h3 className="text-lg font-semibold text-[#3E5B45]">
           {format(currentMonth, 'MMMM yyyy')}
         </h3>
 
@@ -102,13 +102,13 @@ export default function CalendarDatePicker({
               disabled={isDisabled}
               className={`aspect-square rounded-full flex items-center justify-center text-sm font-medium transition-all ${
                 isSelected
-                  ? 'bg-[#1B3D2F] text-white'
+                  ? 'bg-[#3E5B45] text-white'
                   : isTodayDate
-                    ? 'border-2 border-[#1B3D2F] text-[#1B3D2F]'
+                    ? 'border-2 border-[#3E5B45] text-[#3E5B45]'
                     : isCurrentMonth
                       ? isDisabled
                         ? 'text-gray-300 cursor-not-allowed'
-                        : 'text-[#1B3D2F] hover:bg-gray-100 cursor-pointer'
+                        : 'text-[#3E5B45] hover:bg-gray-100 cursor-pointer'
                       : 'text-gray-300'
               }`}
               title={isDisabled && isCurrentMonth ? 'No availability' : ''}
@@ -122,7 +122,7 @@ export default function CalendarDatePicker({
       {/* Selected Date Display */}
       {selectedDate && (
         <div className="text-sm text-[#6B7280] text-center">
-          Selected: <span className="font-semibold text-[#1B3D2F]">
+          Selected: <span className="font-semibold text-[#3E5B45]">
             {format(new Date(selectedDate), 'EEEE, MMMM d, yyyy')}
           </span>
         </div>

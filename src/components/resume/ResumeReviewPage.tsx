@@ -94,21 +94,21 @@ export default function ResumeReviewPage({ onBack }: ResumeReviewPageProps) {
   };
 
   return (
-    <div className="min-h-screen bg-[#EAF4F1] flex flex-col">
+    <div className="min-h-screen bg-[#F4F3E8] flex flex-col">
        {/* Header */}
        <div className="bg-white shadow-sm p-4 flex items-center justify-between">
         <button 
           onClick={onBack}
-          className="flex items-center text-[#6B7280] hover:text-[#1B3D2F] transition-colors"
+          className="flex items-center text-[#6B7280] hover:text-[#3E5B45] transition-colors"
         >
           <ArrowLeft className="w-5 h-5 mr-2" />
           Back to Dashboard
         </button>
         <div className="flex items-center gap-2">
-           <h1 className="text-xl font-bold text-[#1B3D2F]">Resumé Review</h1>
+           <h1 className="text-xl font-bold text-[#3E5B45]">Resumé Review</h1>
            <button 
              onClick={() => setShowPromptEditor(!showPromptEditor)}
-             className="p-1 text-gray-300 hover:text-[#1B3D2F] transition-colors rounded-full hover:bg-gray-100"
+             className="p-1 text-gray-300 hover:text-[#3E5B45] transition-colors rounded-full hover:bg-gray-100"
              title="Tune Review Prompt"
            >
              <Settings2 className="w-4 h-4" />
@@ -123,7 +123,7 @@ export default function ResumeReviewPage({ onBack }: ResumeReviewPageProps) {
           <div className="bg-white rounded-2xl w-full max-w-2xl flex flex-col shadow-2xl animate-in fade-in zoom-in duration-200">
             <div className="flex items-center justify-between p-6 border-b border-gray-100">
               <div>
-                <h3 className="text-lg font-bold text-[#1B3D2F]">Review Prompt Editor</h3>
+                <h3 className="text-lg font-bold text-[#3E5B45]">Review Prompt Editor</h3>
                 <p className="text-sm text-gray-500">Edit the instructions given to the AI reviewer.</p>
               </div>
               <button 
@@ -138,7 +138,7 @@ export default function ResumeReviewPage({ onBack }: ResumeReviewPageProps) {
                <textarea
                  value={customPrompt}
                  onChange={(e) => setCustomPrompt(e.target.value)}
-                 className="w-full h-[300px] p-4 rounded-xl border border-gray-200 font-mono text-sm leading-relaxed focus:border-[#1B3D2F] focus:ring-2 focus:ring-[#1B3D2F]/20 outline-none resize-none"
+                 className="w-full h-[300px] p-4 rounded-xl border border-gray-200 font-mono text-sm leading-relaxed focus:border-[#3E5B45] focus:ring-2 focus:ring-[#3E5B45]/20 outline-none resize-none"
                  placeholder="Enter system prompt..."
                />
             </div>
@@ -146,13 +146,13 @@ export default function ResumeReviewPage({ onBack }: ResumeReviewPageProps) {
             <div className="p-6 border-t border-gray-100 flex justify-end gap-3">
               <button 
                 onClick={() => setCustomPrompt(defaultSystemPrompt)}
-                className="px-4 py-2 text-sm text-gray-600 hover:text-[#1B3D2F] font-medium"
+                className="px-4 py-2 text-sm text-gray-600 hover:text-[#3E5B45] font-medium"
               >
                 Reset to Default
               </button>
               <button 
                 onClick={() => setShowPromptEditor(false)}
-                className="px-6 py-2 bg-[#1B3D2F] text-white rounded-lg font-medium hover:bg-[#152e24] transition-colors"
+                className="px-6 py-2 bg-[#3E5B45] text-white rounded-lg font-medium hover:bg-[#152e24] transition-colors"
               >
                 Save & Close
               </button>
@@ -171,14 +171,14 @@ export default function ResumeReviewPage({ onBack }: ResumeReviewPageProps) {
                     onClick={() => fileInputRef.current?.click()}
                     onDragOver={handleDragOver}
                     onDrop={handleDrop}
-                    className="border-2 border-dashed border-gray-300 rounded-xl p-12 flex flex-col items-center justify-center text-center cursor-pointer hover:border-[#1B3D2F] hover:bg-gray-50 transition-all group"
+                    className="border-2 border-dashed border-gray-300 rounded-xl p-12 flex flex-col items-center justify-center text-center cursor-pointer hover:border-[#3E5B45] hover:bg-gray-50 transition-all group"
                 >
                     <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <Upload className="w-8 h-8 text-[#1B3D2F]" />
+                        <Upload className="w-8 h-8 text-[#3E5B45]" />
                     </div>
-                    <h3 className="text-lg font-semibold text-[#1B3D2F] mb-1">Upload your Resumé</h3>
+                    <h3 className="text-lg font-semibold text-[#3E5B45] mb-1">Upload your Resumé</h3>
                     <p className="text-gray-500 text-sm mb-4">Drag & drop or click to browse (PDF, PNG, JPG)</p>
-                    <button className="px-4 py-2 bg-white border border-gray-200 rounded-lg text-sm font-medium text-gray-600 group-hover:border-[#1B3D2F] group-hover:text-[#1B3D2F] transition-colors">
+                    <button className="px-4 py-2 bg-white border border-gray-200 rounded-lg text-sm font-medium text-gray-600 group-hover:border-[#3E5B45] group-hover:text-[#3E5B45] transition-colors">
                         Select File
                     </button>
                     <input 
@@ -193,10 +193,10 @@ export default function ResumeReviewPage({ onBack }: ResumeReviewPageProps) {
                 <div className="flex items-center justify-between p-4 border border-gray-200 rounded-xl bg-gray-50">
                     <div className="flex items-center gap-3">
                         <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center border border-gray-100">
-                             <FileText className="w-5 h-5 text-[#1B3D2F]" />
+                             <FileText className="w-5 h-5 text-[#3E5B45]" />
                         </div>
                         <div>
-                            <p className="font-medium text-[#1B3D2F]">{file.name}</p>
+                            <p className="font-medium text-[#3E5B45]">{file.name}</p>
                             <p className="text-xs text-gray-500">{(file.size / 1024 / 1024).toFixed(2)} MB</p>
                         </div>
                     </div>
@@ -221,7 +221,7 @@ export default function ResumeReviewPage({ onBack }: ResumeReviewPageProps) {
                     <button
                         onClick={handleAnalyze}
                         disabled={isProcessing}
-                        className={`px-8 py-3 bg-[#1B3D2F] text-white rounded-xl font-medium shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center ${
+                        className={`px-8 py-3 bg-[#3E5B45] text-white rounded-xl font-medium shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center ${
                             isProcessing ? 'opacity-70 cursor-wait' : ''
                         }`}
                     >
@@ -245,10 +245,10 @@ export default function ResumeReviewPage({ onBack }: ResumeReviewPageProps) {
         {review && (
             <div className="bg-white rounded-2xl shadow-lg p-8 animate-in fade-in slide-in-from-bottom-4">
                 <div className="flex items-center gap-3 mb-6 pb-6 border-b border-gray-100">
-                     <div className="w-10 h-10 bg-[#EAF4F1] rounded-full flex items-center justify-center">
-                         <CheckCircle2 className="w-6 h-6 text-[#1B3D2F]" />
+                     <div className="w-10 h-10 bg-[#F4F3E8] rounded-full flex items-center justify-center">
+                         <CheckCircle2 className="w-6 h-6 text-[#3E5B45]" />
                      </div>
-                     <h2 className="text-xl font-bold text-[#1B3D2F]">Analysis Results</h2>
+                     <h2 className="text-xl font-bold text-[#3E5B45]">Analysis Results</h2>
                 </div>
                 
                 <div className="prose prose-emerald max-w-none">
@@ -258,7 +258,7 @@ export default function ResumeReviewPage({ onBack }: ResumeReviewPageProps) {
                 <div className="mt-8 pt-6 border-t border-gray-100 flex justify-end">
                     <button 
                         onClick={() => fileInputRef.current?.click()}
-                        className="text-[#1B3D2F] font-medium hover:underline text-sm"
+                        className="text-[#3E5B45] font-medium hover:underline text-sm"
                     >
                         Upload another resumé
                     </button>

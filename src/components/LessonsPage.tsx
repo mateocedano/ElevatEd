@@ -135,14 +135,14 @@ export default function LessonsPage({ onBackToDashboard }: LessonsPageProps) {
       return (
         <div className="flex items-center justify-center h-full">
           <div className="bg-white rounded-2xl shadow-lg p-8 max-w-md w-full text-center">
-            <div className="w-16 h-16 bg-gradient-to-br from-[#1B3D2F] to-[#A7D7C5] rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="w-16 h-16 bg-gradient-to-br from-[#3E5B45] to-[#AEBFAB] rounded-full flex items-center justify-center mx-auto mb-6">
               <Award className="w-8 h-8 text-white" />
             </div>
-            <h2 className="text-2xl font-bold text-[#1B3D2F] mb-4">
+            <h2 className="text-2xl font-bold text-[#3E5B45] mb-4">
               🎉 You completed Module 1: Resume Mastery
             </h2>
-            <div className="bg-[#EAF4F1] rounded-lg p-4 mb-6">
-              <p className="text-lg font-semibold text-[#1B3D2F]">XP Earned: +500 XP</p>
+            <div className="bg-[#F4F3E8] rounded-lg p-4 mb-6">
+              <p className="text-lg font-semibold text-[#3E5B45]">XP Earned: +500 XP</p>
             </div>
             <button 
               onClick={() => setShowCompletion(false)}
@@ -162,16 +162,16 @@ export default function LessonsPage({ onBackToDashboard }: LessonsPageProps) {
         <div className="bg-white rounded-lg p-4 mb-6 shadow-sm">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm font-medium text-[#6B7280]">Course Progress</span>
-            <span className="text-sm font-bold text-[#1B3D2F]">
+            <span className="text-sm font-bold text-[#3E5B45]">
               {completedLessons} of {totalLessons} completed
             </span>
           </div>
-          <div className="w-full bg-[#DDE5E1] rounded-full h-3">
+          <div className="w-full bg-[#E6DCC8] rounded-full h-3">
             <div 
               className="h-3 rounded-full transition-all duration-300"
               style={{ 
                 width: `${progressPercentage}%`,
-                background: 'linear-gradient(to right, #1B3D2F, #A7D7C5)'
+                background: 'linear-gradient(to right, #3E5B45, #AEBFAB)'
               }}
             ></div>
           </div>
@@ -181,15 +181,15 @@ export default function LessonsPage({ onBackToDashboard }: LessonsPageProps) {
         {/* Main Content */}
         <div className="bg-white rounded-2xl shadow-lg p-8 flex-1 flex items-center justify-center">
           <div className="text-center max-w-2xl">
-            <div className="w-20 h-20 bg-[#EAF4F1] rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="w-20 h-20 bg-[#F4F3E8] rounded-full flex items-center justify-center mx-auto mb-6">
               {getIcon(selectedLesson.type)}
             </div>
             
-            <h1 className="text-3xl font-bold text-[#1B3D2F] mb-4">
+            <h1 className="text-3xl font-bold text-[#3E5B45] mb-4">
               {selectedLesson.title}
             </h1>
             
-            <div className="bg-[#EAF4F1] rounded-lg p-6 mb-8">
+            <div className="bg-[#F4F3E8] rounded-lg p-6 mb-8">
               {selectedLesson.type === 'video' && (
                 <p className="text-lg text-[#6B7280]">
                   📺 This is where the video player will appear for "{selectedLesson.title}"
@@ -218,7 +218,7 @@ export default function LessonsPage({ onBackToDashboard }: LessonsPageProps) {
             </div>
 
             <div className="flex items-center justify-between">
-              <button className="flex items-center space-x-2 text-[#6B7280] hover:text-[#1B3D2F] transition-colors">
+              <button className="flex items-center space-x-2 text-[#6B7280] hover:text-[#3E5B45] transition-colors">
                 <ArrowLeft className="w-4 h-4" />
                 <span>Previous</span>
               </button>
@@ -239,26 +239,26 @@ export default function LessonsPage({ onBackToDashboard }: LessonsPageProps) {
   };
 
   return (
-    <div className="min-h-screen bg-[#EAF4F1] flex">
+    <div className="min-h-screen bg-[#F4F3E8] flex">
       {/* Left Sidebar */}
       <div className="w-80 bg-white shadow-lg flex flex-col">
         {/* Header */}
         <div className="p-6 border-b border-gray-100">
           <button 
             onClick={onBackToDashboard}
-            className="flex items-center space-x-2 text-[#6B7280] hover:text-[#1B3D2F] mb-4 transition-colors duration-200"
+            className="flex items-center space-x-2 text-[#6B7280] hover:text-[#3E5B45] mb-4 transition-colors duration-200"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Dashboard</span>
           </button>
-          <h1 className="text-2xl font-bold text-[#1B3D2F]">Resume and LinkedIn</h1>
+          <h1 className="text-2xl font-bold text-[#3E5B45]">Resume and LinkedIn</h1>
         </div>
 
         {/* Course Content */}
         <div className="flex-1 overflow-y-auto p-6">
           {courseData.map((module) => (
             <div key={module.id} className="mb-8">
-              <h2 className="text-lg font-bold text-[#1B3D2F] mb-4">
+              <h2 className="text-lg font-bold text-[#3E5B45] mb-4">
                 Module {module.id === 'module1' ? '1' : '2'}: {module.title}
               </h2>
               
@@ -269,12 +269,12 @@ export default function LessonsPage({ onBackToDashboard }: LessonsPageProps) {
                     onClick={() => setSelectedLesson(lesson)}
                     className={`w-full flex items-center space-x-3 p-3 rounded-lg text-left transition-all duration-200 ${
                       selectedLesson.id === lesson.id
-                        ? 'bg-[#EAF4F1] border-l-4 border-[#1B3D2F]'
+                        ? 'bg-[#F4F3E8] border-l-4 border-[#3E5B45]'
                         : 'hover:bg-gray-50'
                     }`}
                   >
                     <div className={`flex-shrink-0 ${
-                      lesson.completed ? 'text-[#1B3D2F]' : 'text-[#6B7280]'
+                      lesson.completed ? 'text-[#3E5B45]' : 'text-[#6B7280]'
                     }`}>
                       {lesson.completed ? (
                         <CheckCircle className="w-5 h-5 fill-current" />
@@ -285,7 +285,7 @@ export default function LessonsPage({ onBackToDashboard }: LessonsPageProps) {
                     
                     <div className="flex-1 min-w-0">
                       <p className={`font-medium truncate ${
-                        selectedLesson.id === lesson.id ? 'text-[#1B3D2F]' : 'text-[#1B3D2F]'
+                        selectedLesson.id === lesson.id ? 'text-[#3E5B45]' : 'text-[#3E5B45]'
                       }`}>
                         {lesson.title}
                       </p>

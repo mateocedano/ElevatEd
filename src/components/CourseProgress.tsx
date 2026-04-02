@@ -10,10 +10,10 @@ export default function CourseProgress({ onContinue, onCourseClick }: CourseProg
   return (
     <div className="bg-white rounded-2xl shadow-lg p-5">
       <div className="mb-4">
-        <p className="text-base font-medium text-[#1B3D2F] mb-2">Course</p>
+        <p className="text-base font-medium text-[#3E5B45] mb-2">Course</p>
         <button 
           onClick={onCourseClick}
-          className="text-2xl font-bold text-[#1B3D2F] mb-4 hover:text-opacity-80 transition-colors duration-200 text-left"
+          className="text-2xl font-bold text-[#3E5B45] mb-4 hover:text-opacity-80 transition-colors duration-200 text-left"
         >
           Resume and LinkedIn
         </button>
@@ -22,12 +22,12 @@ export default function CourseProgress({ onContinue, onCourseClick }: CourseProg
       <div className="flex items-center justify-between mb-4">
         <div className="flex-1 mr-4">
           {/* Progress Bar */}
-          <div className="w-full bg-[#DDE5E1] rounded-full h-3 mb-3">
+          <div className="w-full bg-[#E6DCC8] rounded-full h-3 mb-3">
             <div 
               className="h-3 rounded-full transition-all duration-300 ease-out"
               style={{ 
                 width: '65%',
-                background: 'linear-gradient(to right, #1B3D2F, #A7D7C5)'
+                background: 'linear-gradient(to right, #3E5B45, #AEBFAB)'
               }}
             ></div>
           </div>

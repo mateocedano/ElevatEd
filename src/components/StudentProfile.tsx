@@ -171,7 +171,7 @@ export default function StudentProfile({ studentId, onBackToAdvisor }: StudentPr
               <div key={course.id} className="bg-white rounded-2xl shadow-lg p-6">
                 <div className="flex items-center justify-between mb-4">
                   <div>
-                    <h4 className="text-lg font-bold text-[#1B3D2F]">{course.title}</h4>
+                    <h4 className="text-lg font-bold text-[#3E5B45]">{course.title}</h4>
                     <p className="text-sm text-[#6B7280]">{course.xpEarned} XP earned</p>
                   </div>
                   <div className="flex items-center space-x-3">
@@ -190,14 +190,14 @@ export default function StudentProfile({ studentId, onBackToAdvisor }: StudentPr
                 <div className="mb-4">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm font-medium text-[#6B7280]">Progress</span>
-                    <span className="text-sm font-bold text-[#1B3D2F]">{course.progress}%</span>
+                    <span className="text-sm font-bold text-[#3E5B45]">{course.progress}%</span>
                   </div>
-                  <div className="w-full bg-[#DDE5E1] rounded-full h-3">
+                  <div className="w-full bg-[#E6DCC8] rounded-full h-3">
                     <div 
                       className="h-3 rounded-full transition-all duration-300"
                       style={{ 
                         width: `${course.progress}%`,
-                        background: 'linear-gradient(to right, #1B3D2F, #A7D7C5)'
+                        background: 'linear-gradient(to right, #3E5B45, #AEBFAB)'
                       }}
                     ></div>
                   </div>
@@ -212,10 +212,10 @@ export default function StudentProfile({ studentId, onBackToAdvisor }: StudentPr
           <div className="space-y-6">
             {/* Interview Performance Chart */}
             <div className="bg-white rounded-2xl shadow-lg p-6">
-              <h4 className="text-lg font-bold text-[#1B3D2F] mb-4">Interview Performance Trend</h4>
+              <h4 className="text-lg font-bold text-[#3E5B45] mb-4">Interview Performance Trend</h4>
               <div className="h-48 bg-gray-50 rounded-lg flex items-center justify-center mb-4">
                 <div className="text-center">
-                  <TrendingUp className="w-12 h-12 text-[#1B3D2F] mx-auto mb-2" />
+                  <TrendingUp className="w-12 h-12 text-[#3E5B45] mx-auto mb-2" />
                   <p className="text-[#6B7280]">📈 Interview scores trending upward</p>
                   <p className="text-sm text-[#6B7280]">Average score: 80.25</p>
                 </div>
@@ -224,17 +224,17 @@ export default function StudentProfile({ studentId, onBackToAdvisor }: StudentPr
 
             {/* Interview History Table */}
             <div className="bg-white rounded-2xl shadow-lg p-6">
-              <h4 className="text-lg font-bold text-[#1B3D2F] mb-4">Interview History</h4>
+              <h4 className="text-lg font-bold text-[#3E5B45] mb-4">Interview History</h4>
               <div className="space-y-4">
                 {student.interviews.map((interview) => (
                   <div key={interview.id} className="border border-gray-200 rounded-lg p-4">
                     <div className="flex items-center justify-between mb-3">
                       <div>
-                        <h5 className="font-semibold text-[#1B3D2F]">{interview.type} Interview</h5>
+                        <h5 className="font-semibold text-[#3E5B45]">{interview.type} Interview</h5>
                         <p className="text-sm text-[#6B7280]">{interview.date}</p>
                       </div>
                       <div className="text-right">
-                        <div className="text-2xl font-bold text-[#1B3D2F]">{interview.score}</div>
+                        <div className="text-2xl font-bold text-[#3E5B45]">{interview.score}</div>
                         <div className="text-sm text-[#6B7280]">Score</div>
                       </div>
                     </div>
@@ -253,23 +253,23 @@ export default function StudentProfile({ studentId, onBackToAdvisor }: StudentPr
           <div className="space-y-6">
             <div className="bg-white rounded-2xl shadow-lg p-6">
               <div className="flex items-center justify-between mb-6">
-                <h4 className="text-lg font-bold text-[#1B3D2F]">Resume Transformation</h4>
+                <h4 className="text-lg font-bold text-[#3E5B45]">Resume Transformation</h4>
                 <div className="flex items-center space-x-4">
                   <span className="text-sm text-[#6B7280]">Last updated: {student.resumeFeedback.lastUpdated}</span>
-                  <div className="text-3xl font-bold text-[#1B3D2F]">{student.resumeFeedback.score}</div>
+                  <div className="text-3xl font-bold text-[#3E5B45]">{student.resumeFeedback.score}</div>
                 </div>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
-                  <h5 className="font-bold text-[#1B3D2F] mb-3">Before</h5>
+                  <h5 className="font-bold text-[#3E5B45] mb-3">Before</h5>
                   <div className="bg-red-50 border border-red-200 rounded-lg p-4">
                     <p className="text-sm text-[#6B7280]">{student.resumeFeedback.beforeText}</p>
                   </div>
                 </div>
                 
                 <div>
-                  <h5 className="font-bold text-[#1B3D2F] mb-3">After</h5>
+                  <h5 className="font-bold text-[#3E5B45] mb-3">After</h5>
                   <div className="bg-green-50 border border-green-200 rounded-lg p-4">
                     <p className="text-sm text-[#6B7280]">{student.resumeFeedback.afterText}</p>
                   </div>
@@ -277,7 +277,7 @@ export default function StudentProfile({ studentId, onBackToAdvisor }: StudentPr
               </div>
 
               <div>
-                <h5 className="font-bold text-[#1B3D2F] mb-3">Advisor Comments</h5>
+                <h5 className="font-bold text-[#3E5B45] mb-3">Advisor Comments</h5>
                 <div className="space-y-2">
                   {student.resumeFeedback.advisorComments.map((comment, index) => (
                     <div key={index} className="flex items-start space-x-2">
@@ -297,13 +297,13 @@ export default function StudentProfile({ studentId, onBackToAdvisor }: StudentPr
   };
 
   return (
-    <div className="min-h-screen bg-[#EAF4F1] p-6">
+    <div className="min-h-screen bg-[#F4F3E8] p-6">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-8">
           <button 
             onClick={onBackToAdvisor}
-            className="flex items-center space-x-2 text-[#6B7280] hover:text-[#1B3D2F] mb-6 transition-colors duration-200"
+            className="flex items-center space-x-2 text-[#6B7280] hover:text-[#3E5B45] mb-6 transition-colors duration-200"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Advisor Dashboard</span>
@@ -316,7 +316,7 @@ export default function StudentProfile({ studentId, onBackToAdvisor }: StudentPr
                 <User className="w-10 h-10 text-white" />
               </div>
               <div className="flex-1">
-                <h1 className="text-3xl font-bold text-[#1B3D2F] mb-2">{student.name}</h1>
+                <h1 className="text-3xl font-bold text-[#3E5B45] mb-2">{student.name}</h1>
                 <div className="flex items-center space-x-6 text-[#6B7280] mb-4">
                   <span>{student.email}</span>
                   <span>{student.cohort}</span>
@@ -330,7 +330,7 @@ export default function StudentProfile({ studentId, onBackToAdvisor }: StudentPr
                 </div>
               </div>
               <div className="text-right">
-                <div className="text-3xl font-bold text-[#1B3D2F]">{student.xp.toLocaleString()}</div>
+                <div className="text-3xl font-bold text-[#3E5B45]">{student.xp.toLocaleString()}</div>
                 <div className="text-sm text-[#6B7280]">Total XP</div>
               </div>
             </div>
@@ -351,8 +351,8 @@ export default function StudentProfile({ studentId, onBackToAdvisor }: StudentPr
                       onClick={() => setActiveTab(tab.id)}
                       className={`flex items-center space-x-2 px-6 py-4 font-medium transition-colors ${
                         activeTab === tab.id
-                          ? 'text-[#1B3D2F] border-b-2 border-[#1B3D2F]'
-                          : 'text-[#6B7280] hover:text-[#1B3D2F]'
+                          ? 'text-[#3E5B45] border-b-2 border-[#3E5B45]'
+                          : 'text-[#6B7280] hover:text-[#3E5B45]'
                       }`}
                     >
                       <Icon className="w-4 h-4" />
@@ -368,10 +368,10 @@ export default function StudentProfile({ studentId, onBackToAdvisor }: StudentPr
 
             {/* Skill Progression Chart */}
             <div className="bg-white rounded-2xl shadow-lg p-6">
-              <h4 className="text-lg font-bold text-[#1B3D2F] mb-4">Skill Progression Over Time</h4>
+              <h4 className="text-lg font-bold text-[#3E5B45] mb-4">Skill Progression Over Time</h4>
               <div className="h-64 bg-gray-50 rounded-lg flex items-center justify-center">
                 <div className="text-center">
-                  <TrendingUp className="w-12 h-12 text-[#1B3D2F] mx-auto mb-2" />
+                  <TrendingUp className="w-12 h-12 text-[#3E5B45] mx-auto mb-2" />
                   <p className="text-[#6B7280]">📊 Multi-line chart showing skill development</p>
                   <p className="text-sm text-[#6B7280]">Resume Writing, Interview Skills, LinkedIn, Job Search, Networking</p>
                 </div>
@@ -383,10 +383,10 @@ export default function StudentProfile({ studentId, onBackToAdvisor }: StudentPr
           <div className="space-y-6">
             <div className="bg-white rounded-2xl shadow-lg p-6">
               <div className="flex items-center justify-between mb-6">
-                <h4 className="text-lg font-bold text-[#1B3D2F]">Advisor Notes</h4>
+                <h4 className="text-lg font-bold text-[#3E5B45]">Advisor Notes</h4>
                 <button
                   onClick={() => setShowAddNote(true)}
-                  className="flex items-center space-x-1 text-[#1B3D2F] hover:bg-gray-50 p-2 rounded-lg transition-colors"
+                  className="flex items-center space-x-1 text-[#3E5B45] hover:bg-gray-50 p-2 rounded-lg transition-colors"
                 >
                   <Plus className="w-4 h-4" />
                   <span className="text-sm font-medium">Add</span>
@@ -399,7 +399,7 @@ export default function StudentProfile({ studentId, onBackToAdvisor }: StudentPr
                     value={newNote}
                     onChange={(e) => setNewNote(e.target.value)}
                     placeholder="Add a note about this student..."
-                    className="w-full h-24 border border-gray-200 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#1B3D2F] resize-none text-sm"
+                    className="w-full h-24 border border-gray-200 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#3E5B45] resize-none text-sm"
                   />
                   <div className="flex space-x-2 mt-3">
                     <button
@@ -410,7 +410,7 @@ export default function StudentProfile({ studentId, onBackToAdvisor }: StudentPr
                     </button>
                     <button
                       onClick={handleAddNote}
-                      className="px-3 py-1 bg-[#1B3D2F] text-white rounded-lg text-sm hover:bg-opacity-90 transition-colors"
+                      className="px-3 py-1 bg-[#3E5B45] text-white rounded-lg text-sm hover:bg-opacity-90 transition-colors"
                     >
                       Save
                     </button>
@@ -423,10 +423,10 @@ export default function StudentProfile({ studentId, onBackToAdvisor }: StudentPr
                   <div key={note.id} className="p-4 bg-gray-50 rounded-lg">
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center space-x-2">
-                        <div className="w-6 h-6 bg-[#1B3D2F] rounded-full flex items-center justify-center">
+                        <div className="w-6 h-6 bg-[#3E5B45] rounded-full flex items-center justify-center">
                           <User className="w-3 h-3 text-white" />
                         </div>
-                        <span className="font-medium text-[#1B3D2F] text-sm">{note.author}</span>
+                        <span className="font-medium text-[#3E5B45] text-sm">{note.author}</span>
                       </div>
                       <span className="text-xs text-[#6B7280]">{note.date}</span>
                     </div>

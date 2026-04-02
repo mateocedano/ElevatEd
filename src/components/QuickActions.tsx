@@ -11,21 +11,21 @@ const actions = [
     id: 'meeting',
     title: 'Book Career Meeting',
     icon: Calendar,
-    gradient: 'from-[#223C43] to-[#1B3D2F]',
+    gradient: 'from-[#2D535D] to-[#3E5B45]',
     description: 'Schedule a 1:1 with your advisor'
   },
   {
     id: 'resume',
     title: 'Resumé Review',
     icon: FileText,
-    gradient: 'from-[#1C4033] to-[#1B3D2F]',
+    gradient: 'from-[#2D535D] to-[#3E5B45]',
     description: 'Get AI-powered feedback on your resume'
   },
   {
     id: 'interview',
     title: 'Mock AI Interview',
     icon: MessageSquare,
-    gradient: 'from-[#1B3D2F] to-[#A7D7C5]',
+    gradient: 'from-[#3E5B45] to-[#AEBFAB]',
     description: 'Practice with our AI interview bot'
   }
 ];
@@ -33,7 +33,7 @@ const actions = [
 export default function QuickActions({ onStartCourse, onBookMeeting }: QuickActionsProps) {
   return (
     <div>
-      <h2 className="text-2xl font-bold text-[#1B3D2F] mb-4">Quick Actions</h2>
+      <h2 className="text-2xl font-bold text-[#3E5B45] mb-4">Quick Actions</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {actions.map((action) => {
           const Icon = action.icon;

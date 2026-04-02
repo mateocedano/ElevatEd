@@ -42,7 +42,7 @@ export default function RightSidebar() {
       {/* Calendar */}
       <div className="bg-white rounded-2xl shadow-lg p-6">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold text-[#1B3D2F]">{currentMonth} {currentYear}</h3>
+          <h3 className="text-lg font-semibold text-[#3E5B45]">{currentMonth} {currentYear}</h3>
           <Calendar className="w-5 h-5 text-[#6B7280]" />
         </div>
 
@@ -55,8 +55,8 @@ export default function RightSidebar() {
 
           {weekDays.map((day, index) => (
             <div key={index} className={`py-2 rounded-lg ${
-              day === currentDate ? 'bg-[#1B3D2F] text-white font-semibold' :
-              'text-[#1B3D2F] hover:bg-gray-50 cursor-pointer'
+              day === currentDate ? 'bg-[#3E5B45] text-white font-semibold' :
+              'text-[#3E5B45] hover:bg-gray-50 cursor-pointer'
             }`}>
               {day}
             </div>
@@ -66,17 +66,17 @@ export default function RightSidebar() {
 
       {/* Upcoming Meetings */}
       <div className="bg-white rounded-2xl shadow-lg p-6">
-        <h3 className="text-lg font-semibold text-[#1B3D2F] mb-4">Upcoming Meetings</h3>
+        <h3 className="text-lg font-semibold text-[#3E5B45] mb-4">Upcoming Meetings</h3>
         <div className="space-y-3">
           {upcomingMeetings.map((meeting, index) => (
             <div key={index} className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
-              <div className="w-2 h-2 bg-[#1B3D2F] rounded-full"></div>
+              <div className="w-2 h-2 bg-[#3E5B45] rounded-full"></div>
               <div className="flex-1">
                 <div className="flex items-center space-x-2">
                   <Clock className="w-4 h-4 text-[#6B7280]" />
                   <span className="text-sm font-medium text-[#6B7280]">{meeting.time}</span>
                 </div>
-                <p className="font-semibold text-[#1B3D2F]">{meeting.title}</p>
+                <p className="font-semibold text-[#3E5B45]">{meeting.title}</p>
                 {meeting.attendees && (
                   <p className="text-sm text-[#6B7280]">{meeting.attendees}</p>
                 )}

@@ -285,26 +285,26 @@ export default function CourseOverviewPage({ onBackToDashboard, onStartCourse }:
 
   if (selectedLesson) {
     return (
-      <div className="min-h-screen bg-[#EAF4F1] p-6">
+      <div className="min-h-screen bg-[#F4F3E8] p-6">
         <div className="max-w-4xl mx-auto">
           <button 
             onClick={() => setSelectedLesson(null)}
-            className="flex items-center space-x-2 text-[#6B7280] hover:text-[#1B3D2F] mb-6 transition-colors duration-200"
+            className="flex items-center space-x-2 text-[#6B7280] hover:text-[#3E5B45] mb-6 transition-colors duration-200"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Course Overview</span>
           </button>
           
           <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
-            <div className="w-20 h-20 bg-[#EAF4F1] rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="w-20 h-20 bg-[#F4F3E8] rounded-full flex items-center justify-center mx-auto mb-6">
               {getIcon(selectedLesson.type)}
             </div>
             
-            <h1 className="text-3xl font-bold text-[#1B3D2F] mb-4">
+            <h1 className="text-3xl font-bold text-[#3E5B45] mb-4">
               {selectedLesson.title}
             </h1>
             
-            <div className="bg-[#EAF4F1] rounded-lg p-6 mb-8">
+            <div className="bg-[#F4F3E8] rounded-lg p-6 mb-8">
               <p className="text-lg text-[#6B7280]">
                 This is where the {selectedLesson.type === 'video' ? 'Video' : selectedLesson.type === 'reading' ? 'Reading' : 'Quiz'} content for "{selectedLesson.title}" will appear.
               </p>
@@ -316,13 +316,13 @@ export default function CourseOverviewPage({ onBackToDashboard, onStartCourse }:
   }
 
   return (
-    <div className="min-h-screen bg-[#EAF4F1] p-6">
+    <div className="min-h-screen bg-[#F4F3E8] p-6">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-8">
           <button 
             onClick={onBackToDashboard}
-            className="flex items-center space-x-2 text-[#6B7280] hover:text-[#1B3D2F] mb-6 transition-colors duration-200"
+            className="flex items-center space-x-2 text-[#6B7280] hover:text-[#3E5B45] mb-6 transition-colors duration-200"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Dashboard</span>
@@ -331,7 +331,7 @@ export default function CourseOverviewPage({ onBackToDashboard, onStartCourse }:
           <div className="bg-white rounded-2xl shadow-lg p-8">
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
               <div className="mb-6 lg:mb-0">
-                <h1 className="text-4xl font-bold text-[#1B3D2F] mb-3">Resume and LinkedIn</h1>
+                <h1 className="text-4xl font-bold text-[#3E5B45] mb-3">Resume and LinkedIn</h1>
                 <p className="text-xl text-[#6B7280] mb-4">Build a job-ready resume and unlock the power of LinkedIn</p>
                 
                 <div className="flex items-center space-x-4">
@@ -350,7 +350,7 @@ export default function CourseOverviewPage({ onBackToDashboard, onStartCourse }:
               <div className="flex-shrink-0">
                 <button 
                   onClick={onStartCourse}
-                  className="bg-[#1B3D2F] text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-opacity-90 transition-all duration-200 hover:scale-105"
+                  className="bg-[#3E5B45] text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-opacity-90 transition-all duration-200 hover:scale-105"
                   style={{ boxShadow: '0 4px 12px rgba(27, 61, 47, 0.3)' }}
                 >
                   {completedLessons > 0 ? 'Resume Course' : 'Start Course'}
@@ -362,16 +362,16 @@ export default function CourseOverviewPage({ onBackToDashboard, onStartCourse }:
             <div className="mt-6">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm font-medium text-[#6B7280]">Course Progress</span>
-                <span className="text-sm font-bold text-[#1B3D2F]">
+                <span className="text-sm font-bold text-[#3E5B45]">
                   {Math.round(progressPercentage)}% complete
                 </span>
               </div>
-              <div className="w-full bg-[#DDE5E1] rounded-full h-3">
+              <div className="w-full bg-[#E6DCC8] rounded-full h-3">
                 <div 
                   className="h-3 rounded-full transition-all duration-300"
                   style={{ 
                     width: `${progressPercentage}%`,
-                    background: 'linear-gradient(to right, #1B3D2F, #A7D7C5)'
+                    background: 'linear-gradient(to right, #3E5B45, #AEBFAB)'
                   }}
                 ></div>
               </div>
@@ -390,7 +390,7 @@ export default function CourseOverviewPage({ onBackToDashboard, onStartCourse }:
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-4">
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                      module.completed ? 'bg-[#1B3D2F]' : 'bg-[#DDE5E1]'
+                      module.completed ? 'bg-[#3E5B45]' : 'bg-[#E6DCC8]'
                     }`}>
                       {module.completed ? (
                         <CheckCircle className="w-5 h-5 text-white fill-current" />
@@ -399,7 +399,7 @@ export default function CourseOverviewPage({ onBackToDashboard, onStartCourse }:
                       )}
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-[#1B3D2F]">
+                      <h3 className="text-xl font-bold text-[#3E5B45]">
                         Module {moduleIndex + 1}: {module.title}
                       </h3>
                       <p className="text-sm text-[#6B7280]">
@@ -428,7 +428,7 @@ export default function CourseOverviewPage({ onBackToDashboard, onStartCourse }:
                         className="w-full flex items-center space-x-4 p-4 bg-white rounded-lg hover:bg-gray-50 transition-colors duration-200"
                       >
                         <div className={`flex-shrink-0 ${
-                          lesson.completed ? 'text-[#1B3D2F]' : 'text-[#6B7280]'
+                          lesson.completed ? 'text-[#3E5B45]' : 'text-[#6B7280]'
                         }`}>
                           {lesson.completed ? (
                             <CheckCircle className="w-5 h-5 fill-current" />
@@ -438,7 +438,7 @@ export default function CourseOverviewPage({ onBackToDashboard, onStartCourse }:
                         </div>
                         
                         <div className="flex-1 text-left">
-                          <p className="font-medium text-[#1B3D2F]">{lesson.title}</p>
+                          <p className="font-medium text-[#3E5B45]">{lesson.title}</p>
                           <p className="text-sm text-[#6B7280]">{lesson.duration}</p>
                         </div>
                         

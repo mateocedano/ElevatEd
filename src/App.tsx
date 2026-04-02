@@ -128,13 +128,13 @@ function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-[#EAF4F1] p-6">
+    <div className="min-h-screen bg-[#F4F3E8] p-6">
       <div className="max-w-full">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center space-x-3">
             <GraduationCap className="w-10 h-10 text-blue-600" />
-            <span className="text-3xl font-bold text-[#1B3D2F]">ElevatEd</span>
+            <span className="text-3xl font-bold text-[#3E5B45]">ElevatEd</span>
           </div>
           <div className="flex items-center space-x-4">
             <SearchBar />
@@ -144,7 +144,7 @@ function Dashboard() {
               </span>
               <button
                 onClick={handleSignOut}
-                className="text-sm text-[#6B7280] hover:text-[#1B3D2F] underline"
+                className="text-sm text-[#6B7280] hover:text-[#3E5B45] underline"
               >
                 Sign Out
               </button>

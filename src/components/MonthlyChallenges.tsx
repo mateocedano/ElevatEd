@@ -22,7 +22,7 @@ const challenges = [
 export default function MonthlyChallenges() {
   return (
     <div className="bg-white rounded-2xl shadow-lg p-6 h-full flex flex-col">
-      <h2 className="text-2xl font-bold text-[#1B3D2F] mb-6">Monthly Challenges</h2>
+      <h2 className="text-2xl font-bold text-[#3E5B45] mb-6">Monthly Challenges</h2>
 
       <div className="space-y-4">
         {challenges.map((challenge, index) => {
@@ -34,24 +34,24 @@ export default function MonthlyChallenges() {
                 <div className="flex items-center space-x-3">
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
                     challenge.progress.current === challenge.progress.total
-                      ? 'bg-[#1B3D2F]'
+                      ? 'bg-[#3E5B45]'
                       : 'bg-gray-300'
                   }`}>
                     <Icon className="w-4 h-4 text-white" />
                   </div>
-                  <span className="text-sm font-medium text-[#1B3D2F]">{challenge.title}</span>
+                  <span className="text-sm font-medium text-[#3E5B45]">{challenge.title}</span>
                 </div>
                 <span className="text-sm font-bold text-[#F6C28B]">
                   {challenge.progress.current}/{challenge.progress.total}
                 </span>
               </div>
 
-              <div className="w-full bg-[#DDE5E1] rounded-full h-2">
+              <div className="w-full bg-[#E6DCC8] rounded-full h-2">
                 <div
                   className="h-2 rounded-full transition-all duration-300 ease-out"
                   style={{
                     width: `${progressPercentage}%`,
-                    background: 'linear-gradient(to right, #1B3D2F, #A7D7C5)'
+                    background: 'linear-gradient(to right, #3E5B45, #AEBFAB)'
                   }}
                 ></div>
               </div>

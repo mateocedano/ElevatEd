@@ -51,8 +51,8 @@ export default function Sidebar({ activeTab, setActiveTab, isAdvisor = false }: 
               onClick={() => setActiveTab(item.id)}
               className={`w-full flex items-center space-x-3 px-4 py-3.5 rounded-xl transition-all duration-200 ${
                 isActive 
-                  ? 'bg-gradient-to-r from-[#1B3D2F] to-[#A7D7C5] text-white shadow-lg' 
-                  : 'text-[#6B7280] hover:bg-gray-50 hover:text-[#1B3D2F]'
+                  ? 'bg-gradient-to-r from-[#3E5B45] to-[#AEBFAB] text-white shadow-lg' 
+                  : 'text-[#6B7280] hover:bg-gray-50 hover:text-[#3E5B45]'
               }`}
             >
               <Icon className="w-5 h-5" />

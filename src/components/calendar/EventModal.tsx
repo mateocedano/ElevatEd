@@ -100,7 +100,7 @@ export default function EventModal({
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Event title"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1B3D2F]"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3E5B45]"
             />
           </div>
 
@@ -114,7 +114,7 @@ export default function EventModal({
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Add details..."
               rows={3}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1B3D2F] resize-none"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3E5B45] resize-none"
             />
           </div>
 
@@ -128,7 +128,7 @@ export default function EventModal({
               value={location}
               onChange={(e) => setLocation(e.target.value)}
               placeholder="Add location"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1B3D2F]"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3E5B45]"
             />
           </div>
 
@@ -157,7 +157,7 @@ export default function EventModal({
                   type="datetime-local"
                   value={format(startTime, "yyyy-MM-dd'T'HH:mm")}
                   onChange={(e) => setStartTime(new Date(e.target.value))}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1B3D2F]"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3E5B45]"
                 />
               </div>
 
@@ -170,7 +170,7 @@ export default function EventModal({
                   type="datetime-local"
                   value={format(endTime, "yyyy-MM-dd'T'HH:mm")}
                   onChange={(e) => setEndTime(new Date(e.target.value))}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1B3D2F]"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3E5B45]"
                 />
               </div>
             </>
@@ -218,7 +218,7 @@ export default function EventModal({
           <button
             onClick={handleSave}
             disabled={!title.trim()}
-            className="flex-1 py-2 bg-[#1B3D2F] text-white rounded-lg font-medium hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex-1 py-2 bg-[#3E5B45] text-white rounded-lg font-medium hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Save Event
           </button>
