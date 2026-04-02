@@ -4,7 +4,8 @@ import {
   BookOpen,
   Users,
   Briefcase,
-  Settings
+  Settings,
+  MessageSquare
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -17,6 +18,7 @@ export default function Sidebar({ activeTab, setActiveTab, isAdvisor = false }: 
   const studentMenuItems = [
     { id: 'dashboard', icon: Home, label: 'Dashboard' },
     { id: 'calendar', icon: Calendar, label: 'Calendar' },
+    { id: 'messages', icon: MessageSquare, label: 'Messages' },
     { id: 'lessons', icon: BookOpen, label: 'Lessons' },
     { id: 'career-resources', icon: Users, label: 'Career Resources' },
     { id: 'job-matches', icon: Briefcase, label: 'Job Matches' },
@@ -26,6 +28,7 @@ export default function Sidebar({ activeTab, setActiveTab, isAdvisor = false }: 
   const advisorMenuItems = [
     { id: 'dashboard', icon: Home, label: 'Dashboard' },
     { id: 'calendar', icon: Calendar, label: 'Calendar' },
+    { id: 'messages', icon: MessageSquare, label: 'Messages' },
     { id: 'lessons', icon: BookOpen, label: 'Lessons' },
     { id: 'career-resources', icon: Users, label: 'Career Resources' },
     { id: 'job-matches', icon: Briefcase, label: 'Job Matches' },
