@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { GraduationCap } from 'lucide-react'
 import AdvisorLoginForm from './AdvisorLoginForm'
 
 export default function AdvisorAuthPage() {
@@ -13,8 +14,9 @@ export default function AdvisorAuthPage() {
       <div className="w-full max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="text-center lg:text-left">
-            <div className="flex items-center justify-center lg:justify-start mb-8">
-              <img src="/Logo_2.0.png" alt="ElevatEd" className="h-16 w-auto" />
+            <div className="flex items-center justify-center lg:justify-start space-x-3 mb-8">
+              <GraduationCap className="w-12 h-12 text-[#1B3D2F]" />
+              <span className="text-4xl font-bold text-[#1B3D2F]">ElevatEd</span>
             </div>
 
             <h1 className="text-5xl font-bold text-[#1B3D2F] mb-6">
