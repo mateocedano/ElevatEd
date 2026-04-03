@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { GraduationCap, Bell } from 'lucide-react';
+import { Bell } from 'lucide-react';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import AuthPage from './components/auth/AuthPage';
 import AdvisorAuthPage from './components/auth/AdvisorAuthPage';
@@ -133,8 +133,7 @@ function Dashboard() {
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center space-x-3">
-            <GraduationCap className="w-10 h-10 text-blue-600" />
-            <span className="text-3xl font-bold text-[#1B3D2F]">ElevatEd</span>
+            <img src="/Logo_2.0.png" alt="ElevatEd" className="h-10 w-auto" />
           </div>
           <div className="flex items-center space-x-4">
             <SearchBar />
