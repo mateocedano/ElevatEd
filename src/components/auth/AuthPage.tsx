@@ -7,10 +7,10 @@ export default function AuthPage() {
   const [isLogin, setIsLogin] = useState(true)
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center p-6">
+    <div className="min-h-screen bg-gradient-to-br from-[#EAF4F1] via-white to-[#D4EAE4] flex items-center justify-center p-6">
       <a
         href="/advisor-login"
-        className="absolute top-6 right-6 px-6 py-2.5 bg-white text-gray-700 rounded-lg font-semibold hover:bg-gray-50 border border-gray-300 transition-all duration-200 shadow-sm hover:shadow-md"
+        className="absolute top-6 right-6 px-6 py-2.5 bg-white text-[#1B3D2F] rounded-lg font-semibold hover:bg-[#F0F9F7] border border-[#A7D7C5] transition-all duration-200 shadow-sm hover:shadow-md"
       >
         Advisor Log In
       </a>
@@ -19,31 +19,31 @@ export default function AuthPage() {
           {/* Left Side - Branding */}
           <div className="text-center lg:text-left">
             <div className="flex items-center justify-center lg:justify-start space-x-3 mb-8">
-              <GraduationCap className="w-12 h-12 text-blue-600" />
-              <span className="text-4xl font-bold text-gray-800">ElevatEd</span>
+              <GraduationCap className="w-12 h-12 text-[#1B3D2F]" />
+              <span className="text-4xl font-bold text-[#1B3D2F]">ElevatEd</span>
             </div>
-            
-            <h1 className="text-5xl font-bold text-gray-800 mb-6">
+
+            <h1 className="text-5xl font-bold text-[#1B3D2F] mb-6">
               Elevate Your Career Journey
             </h1>
-            
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              Join thousands of students who are accelerating their career growth with 
+
+            <p className="text-xl text-[#6B7280] mb-8 leading-relaxed">
+              Join thousands of students who are accelerating their career growth with
               personalized learning, AI-powered tools, and expert guidance.
             </p>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
               <div className="bg-white rounded-xl p-6 shadow-lg">
-                <div className="text-3xl font-bold text-blue-600 mb-2">10K+</div>
-                <div className="text-gray-600">Students Placed</div>
+                <div className="text-3xl font-bold text-[#1B3D2F] mb-2">10K+</div>
+                <div className="text-[#6B7280]">Students Placed</div>
               </div>
               <div className="bg-white rounded-xl p-6 shadow-lg">
-                <div className="text-3xl font-bold text-purple-600 mb-2">500+</div>
-                <div className="text-gray-600">Partner Companies</div>
+                <div className="text-3xl font-bold text-[#A7D7C5] mb-2">500+</div>
+                <div className="text-[#6B7280]">Partner Companies</div>
               </div>
               <div className="bg-white rounded-xl p-6 shadow-lg">
-                <div className="text-3xl font-bold text-orange-600 mb-2">95%</div>
-                <div className="text-gray-600">Success Rate</div>
+                <div className="text-3xl font-bold text-[#1B3D2F] mb-2">95%</div>
+                <div className="text-[#6B7280]">Success Rate</div>
               </div>
             </div>
           </div>
